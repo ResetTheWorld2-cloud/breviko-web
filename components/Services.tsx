@@ -44,13 +44,33 @@ const services = [
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
-        <rect x="6" y="12" width="36" height="24" rx="3" stroke="var(--emerald)" strokeWidth="2" />
-        <path d="M6 18H42" stroke="var(--emerald)" strokeWidth="1.5" opacity="0.3" />
-        <rect x="10" y="22" width="12" height="2" rx="1" fill="var(--emerald)" opacity="0.3" />
-        <rect x="10" y="26" width="8" height="2" rx="1" fill="var(--emerald)" opacity="0.2" />
-        <rect x="10" y="30" width="16" height="2" rx="1" fill="var(--emerald)" opacity="0.15" />
-        <circle cx="35" cy="27" r="5" stroke="var(--emerald)" strokeWidth="1.5" opacity="0.4" />
-        <path d="M33 27L35 29L38 25" stroke="var(--emerald)" strokeWidth="1.5" opacity="0.4" />
+        <rect x="6" y="8" width="36" height="32" rx="3" stroke="var(--emerald)" strokeWidth="2" />
+        <path d="M6 16H42" stroke="var(--emerald)" strokeWidth="1.5" opacity="0.4" />
+        <path d="M18 8V40" stroke="var(--emerald)" strokeWidth="1" opacity="0.2" />
+        <path d="M30 8V40" stroke="var(--emerald)" strokeWidth="1" opacity="0.2" />
+        <path d="M6 24H42" stroke="var(--emerald)" strokeWidth="1" opacity="0.15" />
+        <path d="M6 32H42" stroke="var(--emerald)" strokeWidth="1" opacity="0.15" />
+        <rect x="8" y="10" width="8" height="4" rx="1" fill="var(--emerald)" opacity="0.3" />
+        <rect x="20" y="18" width="8" height="4" rx="1" fill="var(--emerald)" opacity="0.25" />
+        <rect x="32" y="26" width="8" height="4" rx="1" fill="var(--emerald)" opacity="0.2" />
+      </svg>
+    ),
+    title: "Deine Excel-Hölle? Wir räumen auf.",
+    subtitle: "Excel, Daten & Automatisierung",
+    description:
+      "Kaputte Formeln, doppelte Einträge, stundenlange Handarbeit? Wir bringen Ordnung in dein Datenchaos. Automatische Auswertungen, saubere Tabellen, Berichte die sich selbst erstellen.",
+    features: ["Excel-Optimierung", "Automatische Reports", "Datenmigration", "VBA & Makros"],
+    accent: "var(--emerald)",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
+        <rect x="6" y="12" width="36" height="24" rx="3" stroke="var(--sapphire)" strokeWidth="2" />
+        <path d="M6 18H42" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.3" />
+        <circle cx="16" cy="27" r="4" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.4" />
+        <path d="M22 24H38" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.25" />
+        <path d="M22 28H34" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.2" />
+        <path d="M22 32H30" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.15" />
       </svg>
     ),
     title: "Dein Team kann KI. In einem Tag.",
@@ -58,7 +78,7 @@ const services = [
     description:
       "KI ist überall — aber dein Team weiß nicht wo anfangen? Praxisnahe Workshops, keine PowerPoint-Schlachten. Am Morgen Fragen, am Abend Antworten. Am nächsten Tag produktiver.",
     features: ["Praxis-Workshops", "Sofort einsetzbar", "Für jedes Level", "Ehrliche Empfehlungen"],
-    accent: "var(--emerald)",
+    accent: "var(--sapphire)",
   },
 ];
 
@@ -79,13 +99,13 @@ export default function Services() {
             Leistungen
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-3xl">
-            Drei Dinge, die dein
+            Was dein Geschäft
             <br />
-            <span className="text-muted">Geschäft voranbringen.</span>
+            <span className="text-muted">wirklich braucht.</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -96,7 +116,7 @@ export default function Services() {
                 type: "spring",
                 stiffness: 60,
                 damping: 20,
-                delay: index * 0.12,
+                delay: index * 0.1,
               }}
               whileHover={{ y: -6 }}
             >

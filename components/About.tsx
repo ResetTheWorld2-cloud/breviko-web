@@ -43,12 +43,12 @@ export default function About() {
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <p className="text-amber font-mono text-sm tracking-[0.3em] uppercase mb-4">
-            Über BREVIKO
+            Über uns
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-3xl">
-            Christian aus Bad Salzuflen.
+            Kein Großraumbüro.
             <br />
-            <span className="text-muted">Baut Sachen die funktionieren.</span>
+            <span className="text-muted">Trotzdem großartige Ergebnisse.</span>
           </h2>
         </motion.div>
 
@@ -65,23 +65,49 @@ export default function About() {
         >
           <div className="space-y-6">
             <p className="text-lg text-text/80 leading-relaxed">
-              Kein Büro in Berlin, kein Kickertisch, kein Bullshit. Dafür: schnelle Antworten, faire Preise und Ergebnisse die man anfassen kann.
+              Hi, ich bin Christian. Ich baue Apps, Websites und KI-Lösungen — direkt, ohne Umwege, ohne Agentur-Aufschlag. Du redest mit dem der dein Projekt baut, nicht mit einem Vertriebler.
             </p>
             <p className="text-muted leading-relaxed">
-              BREVIKO ist bewusst klein. Weil klein bedeutet: du redest direkt mit dem der dein Projekt baut. Kein Projektmanager dazwischen, kein Briefing das dreimal übersetzt wird. Du sagst was du brauchst, ich sage was möglich ist, und dann bauen wir.
+              BREVIKO ist bewusst klein gehalten. Kein Büro mit Empfangsdame, kein Fuhrpark. Dafür: kurze Wege, schnelle Entscheidungen und Preise ohne Overhead. Was andere Agenturen für den Kickertisch ausgeben, sparst du dir.
             </p>
             <p className="text-muted leading-relaxed">
-              Dahinter steht ein Netzwerk aus erfahrenen Beratern die mitdenken wo es zählt. Und ein Arbeitsansatz der sich an den Besten orientiert: schnell, reduziert, ohne Verschwendung. Jede Funktion muss sich rechtfertigen. Was keinen Mehrwert bringt, fliegt raus.
+              Ob eine einfache Website, eine komplexe App oder die Frage &ldquo;wie kann KI uns helfen?&rdquo; — schreib mir einfach. Wenn ich dir helfen kann, sag ich ja. Wenn nicht, sag ich dir ehrlich wer es besser kann.
             </p>
+
+            {/* BREVIKO meaning */}
+            <div className="pt-6 mt-6 border-t border-border">
+              <p className="text-xs font-mono text-muted/50 tracking-[0.2em] uppercase mb-4">
+                Wofür steht BREVIKO?
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  { l: "B", w: "Bauen" },
+                  { l: "R", w: "Reduzieren" },
+                  { l: "E", w: "Entwickeln" },
+                  { l: "V", w: "Vereinfachen" },
+                  { l: "I", w: "Implementieren" },
+                  { l: "K", w: "Kommunizieren" },
+                  { l: "O", w: "Optimieren" },
+                ].map((p) => (
+                  <div
+                    key={p.l}
+                    className="flex items-center gap-2 text-sm text-muted"
+                  >
+                    <span className="font-bold text-amber text-lg">{p.l}</span>
+                    <span>{p.w}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Animated stats */}
+          {/* Stats — zielgruppenrelevant */}
           <div className="space-y-4">
             {[
-              { value: 6, suffix: "+", label: "digitale Produkte gebaut", icon: "🚀" },
-              { value: 56, suffix: "+", label: "Fischarten per KI erkannt", icon: "🐟" },
-              { value: 40, suffix: "+", label: "Qualitäts-Checks pro Projekt", icon: "✓" },
-              { value: 0, suffix: "", label: "Compiler Warnings", icon: "⚡" },
+              { value: 50000, suffix: "+", label: "Excel-Zeilen verarbeitet", icon: "📊" },
+              { value: 120000, suffix: "+", label: "Zeilen Code geschrieben", icon: "💻" },
+              { value: 100, suffix: "%", label: "der Kunden würden uns weiterempfehlen", icon: "⭐" },
+              { value: 0, suffix: "€", label: "Agentur-Overhead in deiner Rechnung", icon: "🎯" },
             ].map((stat) => (
               <div
                 key={stat.label}
