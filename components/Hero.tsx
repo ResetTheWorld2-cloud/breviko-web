@@ -51,7 +51,7 @@ export default function Hero() {
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
         >
           <p className="text-amber font-mono text-xs sm:text-sm tracking-[0.3em] uppercase mb-8">
-            Apps. Websites. KI-Agenten. Aus Ostwestfalen.
+            Apps. Websites. KI. Aus Bad Salzuflen.
           </p>
         </motion.div>
 
@@ -61,11 +61,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.4 }}
         >
-          <span className="text-text">Gute Apps</span>
+          <span className="text-text">Apps die begeistern.</span>
           <br />
-          <span className="text-text">brauchen keine</span>
+          <span className="text-text">KI die</span>
           <br />
-          <span className="text-amber">große Firma.</span>
+          <span className="text-amber">wirklich hilft.</span>
         </motion.h1>
 
         <motion.p
@@ -74,9 +74,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.7 }}
         >
-          BREVIKO entwickelt digitale Produkte und baut KI-Lösungen — nach den Prinzipien von Toyota, Ive und Krishna.
-          Lean. Reduziert.{" "}
-          <span className="text-text/80">Schön.</span>
+          Dein Geschäft verdient digitale Produkte die funktionieren — ohne monatelanges Warten und ohne Agentur-Overhead.{" "}
+          <span className="text-text/80">Direkt. Persönlich. Fair.</span>
         </motion.p>
 
         <motion.div
@@ -89,14 +88,14 @@ export default function Hero() {
             href="#leistungen"
             className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-amber text-bg-deep font-semibold rounded-full hover:bg-amber/90 transition-all hover:scale-[1.03] active:scale-[0.97]"
           >
-            Was wir anbieten
+            Was wir für dich tun
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a
-            href="#story"
+            href="#kontakt"
             className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-muted rounded-full hover:border-amber/50 hover:text-amber transition-all"
           >
-            Unsere Geschichte
+            Erstgespräch — kostenlos
           </a>
         </motion.div>
       </div>

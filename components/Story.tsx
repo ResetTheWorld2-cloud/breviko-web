@@ -6,26 +6,26 @@ import { motion, useInView } from "framer-motion";
 const timeline = [
   {
     phase: "01",
-    title: "Apps die Probleme lösen",
-    text: "Angefangen mit einer einfachen Frage: Warum sind die meisten Apps so schlecht? Zu viele Features, zu wenig Fokus. Also: selbst machen. Lean. Reduziert. Schön.",
+    title: "Apps die einfach funktionieren",
+    text: "Angefangen hat alles mit einer Frage: Warum sind die meisten Apps so kompliziert? Heute bauen wir Apps die so einfach sind, dass niemand eine Anleitung braucht. 6 Stück bisher, alle laufen.",
     accent: "var(--amber)",
   },
   {
     phase: "02",
-    title: "Websites die konvertieren",
-    text: "Gutes Produkt, schlechte Website? Passiert nicht mehr. Moderne Webauftritte mit der gleichen Obsession für Detail und Performance wie die Apps.",
+    title: "Websites die verkaufen",
+    text: "Gutes Produkt, schlechte Website? Passiert leider ständig. Wir bauen moderne Webauftritte die auf jedem Gerät funktionieren — schnell, schön und mit einem klaren Ziel: dein Geschäft wachsen lassen.",
     accent: "var(--sapphire)",
   },
   {
     phase: "03",
     title: "KI die wirklich arbeitet",
-    text: "Während andere noch überlegen ob KI relevant ist, bauen wir bereits Agenten die Angebote schreiben, Prozesse steuern und Teams entlasten. Keine Demos — Produktion.",
+    text: "Während andere noch überlegen ob KI relevant ist, bauen wir schon Agenten die Angebote schreiben, Daten sortieren und Kundenfragen beantworten. Nicht als Experiment — im echten Einsatz.",
     accent: "var(--amethyst)",
   },
   {
     phase: "04",
     title: "Wissen das bleibt",
-    text: "Die beste Investition? Dein Team. Workshops und Schulungen die aus Zuschauern Anwender machen. Praxisnah, sofort einsetzbar, ohne Bullshit.",
+    text: "Die beste Investition? Dein Team. Unsere Workshops machen aus KI-Skeptikern KI-Anwender. Praxisnah, an einem Tag, mit Tools die am nächsten Morgen schon genutzt werden.",
     accent: "var(--emerald)",
   },
 ];
@@ -36,7 +36,6 @@ export default function Story() {
 
   return (
     <section id="story" className="py-32 px-6 bg-bg-deep relative overflow-hidden" ref={ref}>
-      {/* Decorative vertical line */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent hidden lg:block" />
 
       <div className="max-w-5xl mx-auto">
@@ -47,19 +46,18 @@ export default function Story() {
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <p className="text-amber font-mono text-sm tracking-[0.3em] uppercase mb-4">
-            Die Geschichte
+            Warum BREVIKO
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-4xl">
-            Von der ersten App
+            Alles aus einer Hand.
             <br />
-            <span className="text-muted">zum kompletten digitalen Werkzeugkasten.</span>
+            <span className="text-muted">Von jemandem der es selbst benutzt.</span>
           </h2>
           <p className="text-muted mt-6 max-w-2xl text-lg">
-            BREVIKO ist aus der Überzeugung entstanden, dass man für großartige digitale Produkte kein großes Team braucht — sondern die richtigen Prinzipien, die richtigen Werkzeuge und den Willen, immer am Puls der Technik zu bleiben.
+            Keine Agentur mit 40 Leuten die sich abstimmen müssen. Sondern ein Entwickler der jeden Tag mit den neuesten Technologien arbeitet — und genau weiß was funktioniert und was nur gut klingt.
           </p>
         </motion.div>
 
-        {/* Timeline */}
         <div className="space-y-2">
           {timeline.map((item, index) => (
             <motion.div
@@ -74,7 +72,6 @@ export default function Story() {
                 delay: index * 0.1,
               }}
             >
-              {/* Phase number */}
               <div
                 className="text-4xl font-bold font-mono opacity-20 group-hover:opacity-60 transition-opacity"
                 style={{ color: item.accent }}
@@ -94,7 +91,6 @@ export default function Story() {
           ))}
         </div>
 
-        {/* Closing statement */}
         <motion.div
           className="mt-16 pt-16 border-t border-border"
           initial={{ opacity: 0 }}
@@ -102,8 +98,8 @@ export default function Story() {
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           <p className="text-xl sm:text-2xl text-text/80 font-medium max-w-3xl leading-relaxed">
-            Heute ist BREVIKO ein digitaler Allrounder — Apps, Websites, KI-Agenten, Beratung. Alles aus einer Hand, alles nach den gleichen Prinzipien:{" "}
-            <span className="text-amber">reduziert auf das was zählt.</span>
+            Das Ergebnis? Du bekommst alles was du brauchst — App, Website, KI, Schulung — ohne zwischen fünf Dienstleistern hin und her zu springen.{" "}
+            <span className="text-amber">Ein Ansprechpartner. Schnelle Ergebnisse. Faire Preise.</span>
           </p>
         </motion.div>
       </div>

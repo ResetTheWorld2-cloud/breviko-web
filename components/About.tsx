@@ -46,9 +46,9 @@ export default function About() {
             Über BREVIKO
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-3xl">
-            Lean heißt nicht billig.
+            Christian aus Bad Salzuflen.
             <br />
-            <span className="text-muted">Es heißt fokussiert.</span>
+            <span className="text-muted">Baut Sachen die funktionieren.</span>
           </h2>
         </motion.div>
 
@@ -65,22 +65,22 @@ export default function About() {
         >
           <div className="space-y-6">
             <p className="text-lg text-text/80 leading-relaxed">
-              BREVIKO ist Christian — ein Entwickler aus Ostwestfalen der lieber baut als redet. Apps, Websites, KI-Agenten — alles aus einer Hand, alles nach den gleichen Prinzipien.
+              Kein Büro in Berlin, kein Kickertisch, kein Bullshit. Dafür: schnelle Antworten, faire Preise und Ergebnisse die man anfassen kann.
             </p>
             <p className="text-muted leading-relaxed">
-              Dahinter steht ein Netzwerk aus erfahrenen Beratern, die mitdenken wo es zählt. Keine aufgeblähte Agentur mit Pingpong-Tisch und Bullshit-Bingo. Sondern ein schlankes Setup das liefert — schnell, direkt, ohne Umwege.
+              BREVIKO ist bewusst klein. Weil klein bedeutet: du redest direkt mit dem der dein Projekt baut. Kein Projektmanager dazwischen, kein Briefing das dreimal übersetzt wird. Du sagst was du brauchst, ich sage was möglich ist, und dann bauen wir.
             </p>
             <p className="text-muted leading-relaxed">
-              Der Vorteil? Wer jeden Tag mit den neuesten Technologien arbeitet, muss sie nicht erst lernen wenn der Kunde fragt. KI-Agenten, Automatisierung, moderne Webarchitektur — das ist kein Zukunftsprojekt. Das ist Dienstag.
+              Dahinter steht ein Netzwerk aus erfahrenen Beratern die mitdenken wo es zählt. Und ein Arbeitsansatz der sich an den Besten orientiert: schnell, reduziert, ohne Verschwendung. Jede Funktion muss sich rechtfertigen. Was keinen Mehrwert bringt, fliegt raus.
             </p>
           </div>
 
           {/* Animated stats */}
           <div className="space-y-4">
             {[
-              { value: 6, suffix: "+", label: "digitale Produkte", icon: "🚀" },
-              { value: 56, suffix: "+", label: "Fischarten erkannt (FishingBuddy)", icon: "🐟" },
-              { value: 40, suffix: "+", label: "Lean-UX Audit-Checks", icon: "✓" },
+              { value: 6, suffix: "+", label: "digitale Produkte gebaut", icon: "🚀" },
+              { value: 56, suffix: "+", label: "Fischarten per KI erkannt", icon: "🐟" },
+              { value: 40, suffix: "+", label: "Qualitäts-Checks pro Projekt", icon: "✓" },
               { value: 0, suffix: "", label: "Compiler Warnings", icon: "⚡" },
             ].map((stat) => (
               <div

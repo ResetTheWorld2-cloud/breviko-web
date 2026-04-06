@@ -14,11 +14,11 @@ const services = [
         <rect x="13" y="18" width="8" height="2" rx="1" fill="var(--amber)" opacity="0.2" />
       </svg>
     ),
-    title: "Apps & Websites",
-    subtitle: "iOS, Web, von Idee bis Launch",
+    title: "Dein Geschäft, digital.",
+    subtitle: "Apps & Websites",
     description:
-      "Native iOS Apps mit SwiftUI. Moderne Websites mit Next.js. Keine Templates, kein Baukasten — maßgeschneidert, performant, schön. Vom ersten Wireframe bis zum Store-Release.",
-    features: ["iOS Apps (Swift)", "Websites (Next.js)", "Lean-UX Design", "App Store Launch"],
+      "Deine Kunden suchen dich online — und finden eine Website von 2015? Deine Monteure füllen noch Papier aus? Wir bauen dir eine App oder Website die so einfach ist, dass niemand eine Anleitung braucht.",
+    features: ["iOS Apps", "Moderne Websites", "Von Idee bis Launch", "Keine Templates"],
     accent: "var(--amber)",
   },
   {
@@ -34,11 +34,11 @@ const services = [
         <path d="M24 10V4" stroke="var(--amethyst)" strokeWidth="1.5" opacity="0.3" />
       </svg>
     ),
-    title: "KI-Agenten & Automatisierung",
-    subtitle: "Intelligente Workflows, die arbeiten",
+    title: "Während du schläfst, arbeitet dein Agent.",
+    subtitle: "KI-Agenten & Automatisierung",
     description:
-      "Custom AI Agents die deine Prozesse übernehmen. Angebote schreiben, Daten auswerten, Kunden antworten — rund um die Uhr, ohne Aufsicht. Keine Spielerei, sondern echte Arbeitserleichterung.",
-    features: ["Custom AI Agents", "Workflow-Automatisierung", "API-Integrationen", "Autonome Prozesse"],
+      "Angebote schreiben, Kundenfragen beantworten, Daten auswerten — rund um die Uhr. Wir bauen dir einen digitalen Assistenten der nie krank wird, nie Urlaub braucht und nie vergisst.",
+    features: ["Angebote in Sekunden", "24/7 verfügbar", "Deine Prozesse, automatisiert", "Keine Vorkenntnisse nötig"],
     accent: "var(--amethyst)",
   },
   {
@@ -53,11 +53,11 @@ const services = [
         <path d="M33 27L35 29L38 25" stroke="var(--emerald)" strokeWidth="1.5" opacity="0.4" />
       </svg>
     ),
-    title: "KI-Beratung & Schulungen",
-    subtitle: "Verstehen, einsetzen, profitieren",
+    title: "Dein Team kann KI. In einem Tag.",
+    subtitle: "KI-Beratung & Schulungen",
     description:
-      "Wo lohnt sich KI wirklich? Welche Tools passen? Wie nutzt dein Team sie produktiv? Ehrliche Analyse, praxisnahe Workshops, messbare Ergebnisse. Kein Hype, nur Substanz.",
-    features: ["Potenzial-Analyse", "Team-Workshops", "Prompt Engineering", "Tool-Integration"],
+      "KI ist überall — aber dein Team weiß nicht wo anfangen? Praxisnahe Workshops, keine PowerPoint-Schlachten. Am Morgen Fragen, am Abend Antworten. Am nächsten Tag produktiver.",
+    features: ["Praxis-Workshops", "Sofort einsetzbar", "Für jedes Level", "Ehrliche Empfehlungen"],
     accent: "var(--emerald)",
   },
 ];
@@ -79,9 +79,9 @@ export default function Services() {
             Leistungen
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-3xl">
-            Die meisten reden über KI.
+            Drei Dinge, die dein
             <br />
-            <span className="text-muted">Wir bauen damit.</span>
+            <span className="text-muted">Geschäft voranbringen.</span>
           </h2>
         </motion.div>
 
@@ -100,7 +100,6 @@ export default function Services() {
               }}
               whileHover={{ y: -6 }}
             >
-              {/* Glow on hover */}
               <div
                 className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[60px] opacity-0 group-hover:opacity-[0.07] transition-opacity duration-700"
                 style={{ background: service.accent }}
@@ -111,7 +110,7 @@ export default function Services() {
                   {service.icon}
                 </div>
 
-                <h3 className="text-xl font-bold text-text mb-1 group-hover:text-amber transition-colors">
+                <h3 className="text-lg font-bold text-text mb-1 group-hover:text-amber transition-colors">
                   {service.title}
                 </h3>
                 <p
