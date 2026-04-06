@@ -26,11 +26,11 @@ export default function Impressum() {
             <p>
               BREVIKO
               <br />
-              Christian [Nachname]
+              Christian Hemingway
               <br />
-              [Straße Nr.]
+              Herforder Straße 27
               <br />
-              [PLZ Ort]
+              32105 Bad Salzuflen
             </p>
           </div>
 
@@ -46,9 +46,11 @@ export default function Impressum() {
               Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
             </h2>
             <p>
-              Christian [Nachname]
+              Christian Hemingway
               <br />
-              [Adresse wie oben]
+              Herforder Straße 27
+              <br />
+              32105 Bad Salzuflen
             </p>
           </div>
 
