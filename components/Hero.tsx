@@ -8,11 +8,11 @@ export default function Hero() {
       {/* Ambient gradient background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-sapphire/5 rounded-full blur-[100px] animate-pulse [animation-delay:2s]" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-sapphire/5 rounded-full blur-[100px] animate-pulse [animation-delay:2s]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-amethyst/3 rounded-full blur-[80px] animate-pulse [animation-delay:4s]" />
       </div>
 
-      {/* Grid pattern overlay */}
+      {/* Grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -22,64 +22,81 @@ export default function Hero() {
         }}
       />
 
+      {/* Decorative floating shapes */}
+      <motion.div
+        className="absolute top-[15%] right-[10%] w-20 h-20 border border-amber/10 rounded-2xl"
+        animate={{ rotate: [0, 90, 0], y: [0, -20, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-[25%] left-[8%] w-12 h-12 border border-sapphire/10 rounded-full"
+        animate={{ y: [0, 15, 0], x: [0, 8, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-[40%] right-[5%] w-3 h-3 bg-amber/20 rounded-full"
+        animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 4, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-[35%] left-[15%] w-2 h-2 bg-emerald/20 rounded-full"
+        animate={{ scale: [1, 2, 1], opacity: [0.2, 0.4, 0.2] }}
+        transition={{ duration: 6, repeat: Infinity, delay: 1 }}
+      />
+
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
         >
-          <p className="text-amber font-mono text-sm tracking-[0.3em] uppercase mb-6">
-            Systemhaus & Interaktiv-Studio
+          <p className="text-amber font-mono text-xs sm:text-sm tracking-[0.3em] uppercase mb-8">
+            App-Entwicklung & KI-Beratung aus Ostwestfalen
           </p>
         </motion.div>
 
         <motion.h1
-          className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight mb-8"
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.95]"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.4 }}
         >
-          <span className="text-text">BREV</span>
-          <span className="text-amber">I</span>
-          <span className="text-text">KO</span>
+          <span className="text-text">Gute Apps</span>
+          <br />
+          <span className="text-text">brauchen keine</span>
+          <br />
+          <span className="text-amber">große Firma.</span>
         </motion.h1>
 
         <motion.p
-          className="text-xl sm:text-2xl text-muted max-w-2xl mx-auto mb-4 leading-relaxed"
+          className="text-lg sm:text-xl text-muted max-w-xl mx-auto mb-12 leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.6 }}
+          transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.7 }}
         >
-          Wir bauen Apps die sich{" "}
-          <span className="text-text font-medium">richtig anfühlen.</span>
-        </motion.p>
-
-        <motion.p
-          className="text-muted text-base max-w-lg mx-auto mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-        >
-          Lean-UX Engineering. iOS. Swift. Aus Ostwestfalen.
+          BREVIKO baut iOS Apps und berät zu KI — nach den Prinzipien von Toyota, Ive und Krishna.
+          Lean. Reduziert.{" "}
+          <span className="text-text/80">Schön.</span>
         </motion.p>
 
         <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 80, damping: 20, delay: 1.0 }}
+          transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.9 }}
         >
           <a
             href="#projekte"
-            className="inline-flex items-center justify-center px-8 py-3 bg-amber text-bg-deep font-semibold rounded-full hover:bg-amber/90 transition-all hover:scale-[1.03] active:scale-[0.97]"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-amber text-bg-deep font-semibold rounded-full hover:bg-amber/90 transition-all hover:scale-[1.03] active:scale-[0.97]"
           >
-            Unsere Projekte
+            Was wir gebaut haben
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a
-            href="#dna"
-            className="inline-flex items-center justify-center px-8 py-3 border border-border text-muted rounded-full hover:border-amber/50 hover:text-amber transition-all"
+            href="#leistungen"
+            className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-muted rounded-full hover:border-amber/50 hover:text-amber transition-all"
           >
-            Wie wir bauen
+            Was wir anbieten
           </a>
         </motion.div>
       </div>

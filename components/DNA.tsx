@@ -1,44 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const pillars = [
+const beliefs = [
   {
-    letter: "B",
-    word: "Bauen",
-    description: "Solide Fundamente. Keine Abkürzungen, kein Quick-and-Dirty.",
+    statement: "Komplexität ist Faulheit.",
+    explanation:
+      "Jeder kann Features stapeln. Es braucht Disziplin, sie wegzulassen. Wir streichen so lange, bis nur noch das Wesentliche übrig ist.",
   },
   {
-    letter: "R",
-    word: "Reduzieren",
-    description: "Komplexität ist der Feind. Jede Funktion muss sich rechtfertigen.",
+    statement: "Schönheit ist kein Extra.",
+    explanation:
+      "Eine App die funktioniert aber hässlich ist, ist nicht fertig. Design ist keine Dekoration — es ist die Funktion selbst.",
   },
   {
-    letter: "E",
-    word: "Entwickeln",
-    description: "Innovation ist Pflicht. Wir entwickeln mit dem Blick nach vorn.",
+    statement: "Der beste Screen ist keiner.",
+    explanation:
+      "Bevor wir einen Screen designen, fragen wir: Muss er überhaupt existieren? Oft ist die Antwort nein.",
   },
   {
-    letter: "V",
-    word: "Vereinfachen",
-    description: "Jede Interaktion so einfach wie möglich. Benutzen, nicht nachdenken.",
-  },
-  {
-    letter: "I",
-    word: "Implementieren",
-    description: "Schnell ausführen. Bauen, messen, lernen. Lean in der Praxis.",
-  },
-  {
-    letter: "K",
-    word: "Kommunizieren",
-    description: "Transparent nach innen und außen. Keine Dark Patterns.",
-  },
-  {
-    letter: "O",
-    word: "Optimieren",
-    description: "Kaizen in jeder Iteration. Gut genug ist der Start, nie das Ziel.",
+    statement: "Klein schlägt groß.",
+    explanation:
+      "Kein Management-Overhead. Keine Abstimmungsrunden. Eine Idee morgens, ein Prototyp abends. Das ist unser Vorteil.",
   },
 ];
 
@@ -47,49 +31,78 @@ export default function DNA() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="dna" className="py-32 px-6" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+    <section id="manifest" className="py-32 px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <p className="text-amber font-mono text-sm tracking-[0.3em] uppercase mb-4">
-            Unsere DNA
+            Manifest
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-text">
-            So bauen wir.
+          <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-3xl">
+            Vier Überzeugungen.
+            <br />
+            <span className="text-muted">Kein Bullshit.</span>
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {pillars.map((pillar, index) => (
+        <div className="space-y-1">
+          {beliefs.map((belief, index) => (
             <motion.div
-              key={pillar.letter}
-              className="group relative p-6 rounded-2xl bg-bg/80 border border-border hover:border-amber/40 transition-all duration-300 cursor-default"
+              key={index}
+              className="group grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 md:gap-12 py-10 border-t border-border hover:border-amber/30 transition-colors"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 type: "spring",
-                stiffness: 80,
+                stiffness: 60,
                 damping: 20,
-                delay: index * 0.08,
+                delay: index * 0.1,
               }}
-              whileHover={{ y: -4 }}
             >
-              <div className="text-4xl font-bold text-amber/20 group-hover:text-amber/60 transition-colors mb-2 font-mono">
-                {pillar.letter}
-              </div>
-              <h3 className="text-lg font-semibold text-text mb-2 group-hover:text-amber transition-colors">
-                {pillar.word}
+              <h3 className="text-2xl sm:text-3xl font-bold text-text group-hover:text-amber transition-colors">
+                {belief.statement}
               </h3>
-              <p className="text-sm text-muted leading-relaxed">
-                {pillar.description}
+              <p className="text-muted leading-relaxed self-center">
+                {belief.explanation}
               </p>
             </motion.div>
           ))}
         </div>
+
+        {/* BREVIKO DNA Pillars — compact */}
+        <motion.div
+          className="mt-20 pt-16 border-t border-border"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        >
+          <p className="text-xs font-mono text-muted tracking-[0.2em] uppercase mb-8">
+            B.R.E.V.I.K.O — Die 7 Säulen
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { l: "B", w: "Bauen" },
+              { l: "R", w: "Reduzieren" },
+              { l: "E", w: "Entwickeln" },
+              { l: "V", w: "Vereinfachen" },
+              { l: "I", w: "Implementieren" },
+              { l: "K", w: "Kommunizieren" },
+              { l: "O", w: "Optimieren" },
+            ].map((p) => (
+              <span
+                key={p.l}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-sm text-muted hover:border-amber/40 hover:text-amber transition-all cursor-default"
+              >
+                <span className="font-bold text-amber/60">{p.l}</span>
+                {p.w}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -13,7 +13,7 @@ export default function Projects() {
     <section id="projekte" className="py-32 px-6 bg-bg-deep" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
@@ -21,11 +21,13 @@ export default function Projects() {
           <p className="text-amber font-mono text-sm tracking-[0.3em] uppercase mb-4">
             Portfolio
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-text mb-4">
-            Was wir bauen.
+          <h2 className="text-3xl sm:text-5xl font-bold text-text mb-4 leading-tight max-w-2xl">
+            Sechs Probleme.
+            <br />
+            <span className="text-muted">Sechs Apps.</span>
           </h2>
-          <p className="text-muted max-w-xl mx-auto">
-            iOS Apps für echte Probleme. Jedes Projekt folgt den gleichen Prinzipien — Lean, reduziert, schön.
+          <p className="text-muted max-w-xl mt-6">
+            Jedes Projekt löst ein echtes Problem für echte Menschen. Keine Spielerei, kein Feature-Friedhof. Lean gebaut, schön gemacht.
           </p>
         </motion.div>
 

@@ -1,7 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import DNA from "@/components/DNA";
+import Services from "@/components/Services";
 import Projects from "@/components/Projects";
+import DNA from "@/components/DNA";
 import Philosophy from "@/components/Philosophy";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -13,8 +14,9 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <DNA />
+        <Services />
         <Projects />
+        <DNA />
         <Philosophy />
         <About />
         <Contact />

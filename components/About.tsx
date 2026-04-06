@@ -1,7 +1,33 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
+
+function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const duration = 1500;
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [isInView, target]);
+
+  return (
+    <span ref={ref} className="font-mono">
+      {count}{suffix}
+    </span>
+  );
+}
 
 export default function About() {
   const ref = useRef(null);
@@ -9,23 +35,25 @@ export default function About() {
 
   return (
     <section id="ueber" className="py-32 px-6 bg-bg-deep" ref={ref}>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <p className="text-amber font-mono text-sm tracking-[0.3em] uppercase mb-4">
-            Über
+            Über BREVIKO
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-text">
-            Wer dahinter steckt.
+          <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-3xl">
+            Lean heißt nicht billig.
+            <br />
+            <span className="text-muted">Es heißt fokussiert.</span>
           </h2>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 items-start"
+          className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{
@@ -35,51 +63,39 @@ export default function About() {
             delay: 0.2,
           }}
         >
-          {/* Avatar / Visual */}
-          <div className="flex justify-center md:justify-start">
-            <div className="w-40 h-40 rounded-2xl bg-bg border border-border flex items-center justify-center">
-              <span className="text-5xl text-amber/40 font-bold font-mono">
-                C
-              </span>
-            </div>
+          <div className="space-y-6">
+            <p className="text-lg text-text/80 leading-relaxed">
+              BREVIKO ist Christian — ein Entwickler aus Ostwestfalen mit einem klaren Prinzip: Weniger ist mehr. Weniger Meetings, mehr Code. Weniger Features, mehr Wirkung. Weniger Ego, mehr Ergebnis.
+            </p>
+            <p className="text-muted leading-relaxed">
+              Dahinter steht ein Netzwerk aus erfahrenen Beratern, die mitdenken wo es zählt. Keine aufgeblähte Agentur, keine Overhead-Maschine. Sondern ein schlankes Setup das liefert — schnell, direkt, ohne Umwege.
+            </p>
+            <p className="text-muted leading-relaxed">
+              Jede App entsteht nach den gleichen Prinzipien: Toyota&apos;s radikale Effizienz, Jonathan Ive&apos;s Designbesessenheit, Golden Krishna&apos;s Interface-Reduktion. Das klingt nach Theorie? Die Apps beweisen das Gegenteil.
+            </p>
           </div>
 
-          {/* Text */}
-          <div>
-            <h3 className="text-xl font-bold text-text mb-4">
-              Christian
-              <span className="text-muted font-normal text-base ml-2">
-                Gründer & Entwickler
-              </span>
-            </h3>
-
-            <div className="space-y-4 text-muted leading-relaxed">
-              <p>
-                BREVIKO ist ein Systemhaus & Interaktiv-Studio aus Ostwestfalen. Fokus: iOS Apps mit Swift und SwiftUI die durch Lean-UX-Prinzipien nicht nur funktionieren, sondern sich richtig anfühlen.
-              </p>
-              <p>
-                Die Philosophie verbindet drei Welten: die radikale Einfachheit von Toyota&apos;s Lean Manufacturing, das ikonische Designdenken von Jonathan Ive und die Interface-Reduktion von Golden Krishna. Das Ergebnis: Apps die so klar sind WEIL sie schön sind — und so schön WEIL sie klar sind.
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mt-8">
-              {[
-                { value: "6+", label: "Apps" },
-                { value: "iOS", label: "Plattform" },
-                { value: "OWL", label: "Standort" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="text-center p-4 rounded-xl bg-bg border border-border"
-                >
-                  <div className="text-xl font-bold text-amber font-mono">
-                    {stat.value}
+          {/* Animated stats */}
+          <div className="space-y-4">
+            {[
+              { value: 6, suffix: "+", label: "Apps im Portfolio", icon: "📱" },
+              { value: 56, suffix: "+", label: "Fischarten in FishingBuddy", icon: "🐟" },
+              { value: 40, suffix: "+", label: "Lean-UX Audit-Checks", icon: "✓" },
+              { value: 0, suffix: "", label: "Compiler Warnings", icon: "⚡" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="group flex items-center gap-4 p-5 rounded-xl bg-bg border border-border hover:border-amber/30 transition-all"
+              >
+                <span className="text-2xl w-10 text-center">{stat.icon}</span>
+                <div>
+                  <div className="text-2xl font-bold text-amber">
+                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                   </div>
-                  <div className="text-xs text-muted mt-1">{stat.label}</div>
+                  <p className="text-xs text-muted">{stat.label}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

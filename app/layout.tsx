@@ -13,9 +13,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BREVIKO — Systemhaus & Interaktiv-Studio",
+  title: "BREVIKO — Apps die sich richtig anfühlen.",
   description:
-    "Wir bauen iOS Apps die sich richtig anfühlen. Lean-UX Engineering aus Ostwestfalen.",
+    "App-Entwicklung & KI-Beratung aus Ostwestfalen. iOS Apps nach Lean-UX-Prinzipien. Schulungen, Beratung, Umsetzung.",
   keywords: [
     "iOS",
     "App Entwicklung",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     "BREVIKO",
   ],
   openGraph: {
-    title: "BREVIKO — Systemhaus & Interaktiv-Studio",
+    title: "BREVIKO — Apps die sich richtig anfühlen.",
     description:
-      "Wir bauen iOS Apps die sich richtig anfühlen. Lean-UX Engineering aus Ostwestfalen.",
+      "App-Entwicklung & KI-Beratung aus Ostwestfalen. iOS Apps nach Lean-UX-Prinzipien.",
     locale: "de_DE",
     type: "website",
     url: "https://breviko.de",
