@@ -61,11 +61,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.4 }}
         >
-          <span className="text-text">Apps die begeistern.</span>
+          <span className="text-text">Keine Zeit für</span>
           <br />
-          <span className="text-text">KI die</span>
+          <span className="text-text">Papierkram?</span>
           <br />
-          <span className="text-amber">wirklich hilft.</span>
+          <span className="text-amber">Gut so.</span>
         </motion.h1>
 
         <motion.p
@@ -74,8 +74,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.7 }}
         >
-          Dein Geschäft verdient digitale Produkte die funktionieren — ohne monatelanges Warten und ohne Agentur-Overhead.{" "}
-          <span className="text-text/80">Direkt. Persönlich. Fair.</span>
+          Auftragsbücher voll, gute Leute schwer zu finden, nach Feierabend noch Büro? Wir bauen dir digitale Lösungen die{" "}
+          <span className="text-text/80">Arbeit abnehmen statt welche zu machen.</span>
         </motion.p>
 
         <motion.div
@@ -88,7 +88,7 @@ export default function Hero() {
             href="#leistungen"
             className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-amber text-bg-deep font-semibold rounded-full hover:bg-amber/90 transition-all hover:scale-[1.03] active:scale-[0.97]"
           >
-            Was wir für dich tun
+            Wie wir dir helfen
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a

@@ -19,15 +19,15 @@ export default function Projects() {
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <p className="text-amber font-mono text-sm tracking-[0.3em] uppercase mb-4">
-            Portfolio
+            Eigene Projekte
           </p>
-          <h2 className="text-3xl sm:text-5xl font-bold text-text mb-4 leading-tight max-w-2xl">
-            Sechs Probleme.
+          <h2 className="text-3xl sm:text-5xl font-bold text-text mb-4 leading-tight max-w-3xl">
+            Gebaut aus Neugier.
             <br />
-            <span className="text-muted">Sechs Apps.</span>
+            <span className="text-muted">Geblieben weil&apos;s funktioniert.</span>
           </h2>
-          <p className="text-muted max-w-xl mt-6">
-            Jedes Projekt löst ein echtes Problem für echte Menschen. Keine Spielerei, kein Feature-Friedhof. Lean gebaut, schön gemacht.
+          <p className="text-muted max-w-2xl mt-6 text-lg">
+            Neben Kundenprojekten bauen wir eigene Apps — weil uns Probleme begegnen die wir lösen wollen. Jedes Projekt ist aus einer echten Idee entstanden, nicht aus einem Briefing. Das merkt man.
           </p>
         </motion.div>
 

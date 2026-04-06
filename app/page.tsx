@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import PainPoints from "@/components/PainPoints";
 import Services from "@/components/Services";
 import Story from "@/components/Story";
 import Projects from "@/components/Projects";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
+        <PainPoints />
         <Services />
         <Story />
         <Projects />
