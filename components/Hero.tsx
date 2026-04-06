@@ -22,7 +22,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Decorative floating shapes */}
+      {/* Floating shapes */}
       <motion.div
         className="absolute top-[15%] right-[10%] w-20 h-20 border border-amber/10 rounded-2xl"
         animate={{ rotate: [0, 90, 0], y: [0, -20, 0] }}
@@ -39,7 +39,7 @@ export default function Hero() {
         transition={{ duration: 4, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-[35%] left-[15%] w-2 h-2 bg-emerald/20 rounded-full"
+        className="absolute bottom-[35%] left-[15%] w-2 h-2 bg-amethyst/20 rounded-full"
         animate={{ scale: [1, 2, 1], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 6, repeat: Infinity, delay: 1 }}
       />
@@ -51,7 +51,7 @@ export default function Hero() {
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
         >
           <p className="text-amber font-mono text-xs sm:text-sm tracking-[0.3em] uppercase mb-8">
-            App-Entwicklung & KI-Beratung aus Ostwestfalen
+            Apps. Websites. KI-Agenten. Aus Ostwestfalen.
           </p>
         </motion.div>
 
@@ -74,7 +74,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.7 }}
         >
-          BREVIKO baut iOS Apps und berät zu KI — nach den Prinzipien von Toyota, Ive und Krishna.
+          BREVIKO entwickelt digitale Produkte und baut KI-Lösungen — nach den Prinzipien von Toyota, Ive und Krishna.
           Lean. Reduziert.{" "}
           <span className="text-text/80">Schön.</span>
         </motion.p>
@@ -86,17 +86,17 @@ export default function Hero() {
           transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.9 }}
         >
           <a
-            href="#projekte"
+            href="#leistungen"
             className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-amber text-bg-deep font-semibold rounded-full hover:bg-amber/90 transition-all hover:scale-[1.03] active:scale-[0.97]"
           >
-            Was wir gebaut haben
+            Was wir anbieten
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
           <a
-            href="#leistungen"
+            href="#story"
             className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-muted rounded-full hover:border-amber/50 hover:text-amber transition-all"
           >
-            Was wir anbieten
+            Unsere Geschichte
           </a>
         </motion.div>
       </div>

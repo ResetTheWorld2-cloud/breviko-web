@@ -14,30 +14,32 @@ const services = [
         <rect x="13" y="18" width="8" height="2" rx="1" fill="var(--amber)" opacity="0.2" />
       </svg>
     ),
-    title: "App-Entwicklung",
-    subtitle: "iOS & Swift",
+    title: "Apps & Websites",
+    subtitle: "iOS, Web, von Idee bis Launch",
     description:
-      "Native iOS Apps mit SwiftUI — keine Cross-Platform-Kompromisse. Von der Idee bis zum App Store. Lean-UX-Prinzipien in jedem Pixel.",
-    features: ["SwiftUI & Swift", "App Store Launch", "Lean-UX Design", "CoreML Integration"],
+      "Native iOS Apps mit SwiftUI. Moderne Websites mit Next.js. Keine Templates, kein Baukasten — maßgeschneidert, performant, schön. Vom ersten Wireframe bis zum Store-Release.",
+    features: ["iOS Apps (Swift)", "Websites (Next.js)", "Lean-UX Design", "App Store Launch"],
     accent: "var(--amber)",
   },
   {
     icon: (
       <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
-        <path d="M24 8L36 16V32L24 40L12 32V16L24 8Z" stroke="var(--sapphire)" strokeWidth="2" />
-        <path d="M24 8V24L36 16" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.3" />
-        <path d="M24 24L12 16" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.3" />
-        <path d="M24 24V40" stroke="var(--sapphire)" strokeWidth="1.5" opacity="0.3" />
-        <circle cx="24" cy="24" r="4" fill="var(--sapphire)" opacity="0.2" />
-        <circle cx="24" cy="24" r="2" fill="var(--sapphire)" opacity="0.5" />
+        <circle cx="24" cy="20" r="10" stroke="var(--amethyst)" strokeWidth="2" />
+        <circle cx="24" cy="20" r="4" fill="var(--amethyst)" opacity="0.3" />
+        <path d="M18 32C18 32 20 36 24 36C28 36 30 32 30 32" stroke="var(--amethyst)" strokeWidth="2" opacity="0.5" />
+        <path d="M24 36V42" stroke="var(--amethyst)" strokeWidth="2" opacity="0.4" />
+        <path d="M20 42H28" stroke="var(--amethyst)" strokeWidth="2" opacity="0.4" />
+        <path d="M15 14L12 8" stroke="var(--amethyst)" strokeWidth="1.5" opacity="0.3" />
+        <path d="M33 14L36 8" stroke="var(--amethyst)" strokeWidth="1.5" opacity="0.3" />
+        <path d="M24 10V4" stroke="var(--amethyst)" strokeWidth="1.5" opacity="0.3" />
       </svg>
     ),
-    title: "KI-Beratung",
-    subtitle: "Strategie & Integration",
+    title: "KI-Agenten & Automatisierung",
+    subtitle: "Intelligente Workflows, die arbeiten",
     description:
-      "Wo lohnt sich KI in deinem Unternehmen wirklich? Keine Buzzwords, sondern ehrliche Analyse. Konkrete Empfehlungen, messbare Ergebnisse.",
-    features: ["Potenzial-Analyse", "Tool-Auswahl", "Prozess-Optimierung", "ROI-Bewertung"],
-    accent: "var(--sapphire)",
+      "Custom AI Agents die deine Prozesse übernehmen. Angebote schreiben, Daten auswerten, Kunden antworten — rund um die Uhr, ohne Aufsicht. Keine Spielerei, sondern echte Arbeitserleichterung.",
+    features: ["Custom AI Agents", "Workflow-Automatisierung", "API-Integrationen", "Autonome Prozesse"],
+    accent: "var(--amethyst)",
   },
   {
     icon: (
@@ -51,11 +53,11 @@ const services = [
         <path d="M33 27L35 29L38 25" stroke="var(--emerald)" strokeWidth="1.5" opacity="0.4" />
       </svg>
     ),
-    title: "KI-Schulungen",
-    subtitle: "Teams befähigen",
+    title: "KI-Beratung & Schulungen",
+    subtitle: "Verstehen, einsetzen, profitieren",
     description:
-      "Dein Team lernt, KI-Tools produktiv einzusetzen. Praxisnah, ohne Hype. Von Prompt Engineering bis Workflow-Automatisierung.",
-    features: ["Workshops", "Prompt Engineering", "Tool-Training", "Best Practices"],
+      "Wo lohnt sich KI wirklich? Welche Tools passen? Wie nutzt dein Team sie produktiv? Ehrliche Analyse, praxisnahe Workshops, messbare Ergebnisse. Kein Hype, nur Substanz.",
+    features: ["Potenzial-Analyse", "Team-Workshops", "Prompt Engineering", "Tool-Integration"],
     accent: "var(--emerald)",
   },
 ];
@@ -77,9 +79,9 @@ export default function Services() {
             Leistungen
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-text leading-tight max-w-3xl">
-            Drei Dinge.
+            Die meisten reden über KI.
             <br />
-            <span className="text-muted">Richtig gut.</span>
+            <span className="text-muted">Wir bauen damit.</span>
           </h2>
         </motion.div>
 
@@ -100,21 +102,15 @@ export default function Services() {
             >
               {/* Glow on hover */}
               <div
-                className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                style={{ background: service.accent, opacity: "var(--tw-opacity, 0)" }}
-              />
-              <div
                 className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-[60px] opacity-0 group-hover:opacity-[0.07] transition-opacity duration-700"
                 style={{ background: service.accent }}
               />
 
               <div className="relative">
-                {/* Icon */}
                 <div className="mb-6 opacity-70 group-hover:opacity-100 transition-opacity">
                   {service.icon}
                 </div>
 
-                {/* Title */}
                 <h3 className="text-xl font-bold text-text mb-1 group-hover:text-amber transition-colors">
                   {service.title}
                 </h3>
@@ -125,12 +121,10 @@ export default function Services() {
                   {service.subtitle}
                 </p>
 
-                {/* Description */}
                 <p className="text-sm text-muted leading-relaxed mb-6">
                   {service.description}
                 </p>
 
-                {/* Features */}
                 <div className="flex flex-wrap gap-2">
                   {service.features.map((f) => (
                     <span

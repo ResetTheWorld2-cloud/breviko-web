@@ -65,21 +65,21 @@ export default function About() {
         >
           <div className="space-y-6">
             <p className="text-lg text-text/80 leading-relaxed">
-              BREVIKO ist Christian — ein Entwickler aus Ostwestfalen mit einem klaren Prinzip: Weniger ist mehr. Weniger Meetings, mehr Code. Weniger Features, mehr Wirkung. Weniger Ego, mehr Ergebnis.
+              BREVIKO ist Christian — ein Entwickler aus Ostwestfalen der lieber baut als redet. Apps, Websites, KI-Agenten — alles aus einer Hand, alles nach den gleichen Prinzipien.
             </p>
             <p className="text-muted leading-relaxed">
-              Dahinter steht ein Netzwerk aus erfahrenen Beratern, die mitdenken wo es zählt. Keine aufgeblähte Agentur, keine Overhead-Maschine. Sondern ein schlankes Setup das liefert — schnell, direkt, ohne Umwege.
+              Dahinter steht ein Netzwerk aus erfahrenen Beratern, die mitdenken wo es zählt. Keine aufgeblähte Agentur mit Pingpong-Tisch und Bullshit-Bingo. Sondern ein schlankes Setup das liefert — schnell, direkt, ohne Umwege.
             </p>
             <p className="text-muted leading-relaxed">
-              Jede App entsteht nach den gleichen Prinzipien: Toyota&apos;s radikale Effizienz, Jonathan Ive&apos;s Designbesessenheit, Golden Krishna&apos;s Interface-Reduktion. Das klingt nach Theorie? Die Apps beweisen das Gegenteil.
+              Der Vorteil? Wer jeden Tag mit den neuesten Technologien arbeitet, muss sie nicht erst lernen wenn der Kunde fragt. KI-Agenten, Automatisierung, moderne Webarchitektur — das ist kein Zukunftsprojekt. Das ist Dienstag.
             </p>
           </div>
 
           {/* Animated stats */}
           <div className="space-y-4">
             {[
-              { value: 6, suffix: "+", label: "Apps im Portfolio", icon: "📱" },
-              { value: 56, suffix: "+", label: "Fischarten in FishingBuddy", icon: "🐟" },
+              { value: 6, suffix: "+", label: "digitale Produkte", icon: "🚀" },
+              { value: 56, suffix: "+", label: "Fischarten erkannt (FishingBuddy)", icon: "🐟" },
               { value: 40, suffix: "+", label: "Lean-UX Audit-Checks", icon: "✓" },
               { value: 0, suffix: "", label: "Compiler Warnings", icon: "⚡" },
             ].map((stat) => (

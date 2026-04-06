@@ -19,7 +19,7 @@ export default function Contact() {
           transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <h2 className="text-3xl sm:text-5xl font-bold text-text mb-6 leading-tight">
-            App-Idee? KI-Frage?
+            App, Website, KI-Agent?
             <br />
             <span className="text-amber">Einfach schreiben.</span>
           </h2>
