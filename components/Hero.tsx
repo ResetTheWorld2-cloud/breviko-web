@@ -19,7 +19,7 @@ export default function Hero() {
       <video
         ref={videoRef}
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
-        src="/hero-video.mp4"
+        src="/hero-clip-c-chaos.mp4"
         autoPlay
         loop
         muted
