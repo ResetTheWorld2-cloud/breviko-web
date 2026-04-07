@@ -1,28 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.play().catch(() => {});
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Ambient gradient background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber/5 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-sapphire/5 rounded-full blur-[100px] animate-pulse [animation-delay:2s]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-amethyst/3 rounded-full blur-[80px] animate-pulse [animation-delay:4s]" />
-      </div>
-
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--muted) 1px, transparent 1px), linear-gradient(90deg, var(--muted) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
+      {/* Video Background */}
+      <video
+        ref={videoRef}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
+        src="/hero-video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        onCanPlay={() => setVideoLoaded(true)}
       />
 
-      {/* Floating shapes */}
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-bg-deep/70" />
+
+      {/* Gradient fade at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-bg-deep to-transparent" />
+
+      {/* Fallback ambient gradients (visible before video loads) */}
+      {!videoLoaded && (
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber/5 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-sapphire/5 rounded-full blur-[100px] animate-pulse [animation-delay:2s]" />
+        </div>
+      )}
+
+      {/* Floating shapes (subtle, on top of video) */}
       <motion.div
         className="absolute top-[15%] right-[10%] w-20 h-20 border border-amber/10 rounded-2xl"
         animate={{ rotate: [0, 90, 0], y: [0, -20, 0] }}
@@ -38,12 +58,8 @@ export default function Hero() {
         animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 4, repeat: Infinity }}
       />
-      <motion.div
-        className="absolute bottom-[35%] left-[15%] w-2 h-2 bg-amethyst/20 rounded-full"
-        animate={{ scale: [1, 2, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 6, repeat: Infinity, delay: 1 }}
-      />
 
+      {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -93,7 +109,7 @@ export default function Hero() {
           </a>
           <a
             href="#kontakt"
-            className="inline-flex items-center justify-center px-8 py-3.5 border border-border text-muted rounded-full hover:border-amber/50 hover:text-amber transition-all"
+            className="inline-flex items-center justify-center px-8 py-3.5 border border-white/20 text-white/80 rounded-full hover:border-amber/50 hover:text-amber transition-all backdrop-blur-sm"
           >
             Erstgespräch — kostenlos
           </a>
@@ -102,14 +118,14 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
         <motion.div
-          className="w-5 h-8 rounded-full border-2 border-border flex items-start justify-center p-1"
-          animate={{ borderColor: ["var(--border)", "var(--amber)", "var(--border)"] }}
+          className="w-5 h-8 rounded-full border-2 border-white/20 flex items-start justify-center p-1"
+          animate={{ borderColor: ["rgba(255,255,255,0.2)", "var(--amber)", "rgba(255,255,255,0.2)"] }}
           transition={{ duration: 3, repeat: Infinity }}
         >
           <motion.div
