@@ -1,0 +1,186 @@
+---
+const projects = [
+  {
+    emoji: "🎣",
+    status: "Im App Store",
+    statusColor: "text-green-400",
+    name: "FishingBuddy",
+    tagline: "Weil Angeln mehr ist als Warten",
+    description:
+      "Aus einer Leidenschaft fürs Angeln wurde eine App: Spots finden, Fänge dokumentieren, Fische per KI erkennen. 56+ heimische Arten, Wetter, Mondphasen — alles offline verfügbar.",
+    features: ["KI-Fischerkennung", "56+ Fischarten", "Funktioniert ohne Internet"],
+    stack: ["SwiftUI", "CoreML", "MapKit"],
+  },
+  {
+    emoji: "⏱",
+    status: "Bald verfügbar",
+    statusColor: "text-coral-500",
+    name: "MeetingCost",
+    tagline: "Das Meeting das keiner wollte — live in Euro",
+    description:
+      "Jeder kennt Meetings die zu lang dauern. Diese App zeigt live was sie kosten: pro Sekunde, pro Teilnehmer. Spoiler: es ist mehr als du denkst. Und plötzlich werden Meetings kürzer.",
+    features: ["Live-Kostenzähler", "Teilbare Report Cards", "Meetings werden kürzer"],
+    stack: ["SwiftUI", "Swift Charts"],
+  },
+  {
+    emoji: "🎙",
+    status: "MVP",
+    statusColor: "text-blue-400",
+    name: "SalesMate",
+    tagline: "Einfach reinsprechen, der Rest passiert von selbst",
+    description:
+      "Für alle die nach dem Kundentermin keine Lust auf Tippen haben: einfach erzählen was war. Die KI macht den Bericht, den Arbeitsauftrag und die Doku. Fertig.",
+    features: ["Einfach reinsprechen", "KI schreibt den Bericht", "Funktioniert offline"],
+    stack: ["SwiftUI", "KI-Transkription"],
+  },
+  {
+    emoji: "🔍",
+    status: "Intern im Einsatz",
+    statusColor: "text-yellow-400",
+    name: "GembaWerk",
+    tagline: "Unser internes Qualitäts-Gewissen",
+    description:
+      "40+ automatische Checks die jedes unserer Projekte durchlaufen muss. Damit nichts rausgeht was nicht gut genug ist. Unser Anspruch, als Code verpackt.",
+    features: ["40+ Qualitäts-Checks", "Jedes Projekt wird geprüft"],
+    stack: ["SwiftUI", "Audit-Engine"],
+  },
+  {
+    emoji: "⏰",
+    status: "In Entwicklung",
+    statusColor: "text-purple-400",
+    name: "ArbeitszeitenCounter",
+    tagline: "Zeiterfassung ohne Gedöns",
+    description:
+      "Starten. Stoppen. Fertig. Die einfachste Zeiterfassung die wir uns vorstellen konnten. Weil die meisten Tools mehr nerven als helfen.",
+    features: ["Maximal einfach", "Kein Schnickschnack"],
+    stack: ["SwiftUI"],
+  },
+  {
+    emoji: "🧠",
+    status: "Trainiert & im Einsatz",
+    statusColor: "text-green-400",
+    name: "FishClassifier",
+    tagline: "Maschine lernt Fische kennen",
+    description:
+      "Ein KI-Modell das Fische erkennt — trainiert auf echten Daten, läuft direkt auf dem iPhone. Keine Cloud, keine Wartezeit, kein Datenschutz-Problem. Steckt in FishingBuddy drin.",
+    features: ["Läuft auf dem iPhone", "Keine Cloud nötig", "Privacy-First"],
+    stack: ["PyTorch", "CoreML"],
+  },
+];
+---
+
+<section
+  id="projekte"
+  class="section-padding relative overflow-hidden bg-grey-deep"
+>
+  <div class="container-brv relative z-10">
+    {/* Header */}
+    <div class="mb-20 grid gap-12 lg:grid-cols-2 lg:items-end">
+      <div>
+        <p data-reveal class="eyebrow mb-6">Eigene Projekte</p>
+        <h2
+          data-reveal
+          class="h-section text-[clamp(2.5rem,6vw,5rem)] text-white"
+        >
+          Gebaut aus Neugier.<br />
+          <span class="text-white/40">Geblieben weil's<br />funktioniert.</span>
+        </h2>
+      </div>
+      <p
+        data-reveal
+        class="max-w-xl text-16 leading-relaxed text-white/70 md:text-18"
+      >
+        Neben Kundenprojekten bauen wir eigene Apps — weil uns Probleme begegnen die wir lösen wollen. Jedes Projekt ist aus einer echten Idee entstanden, nicht aus einem Briefing. <em class="not-italic text-white">Das merkt man.</em>
+      </p>
+    </div>
+
+    {/* Project Cards */}
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project, idx) => (
+        <article
+          data-reveal
+          data-spotlight-card
+          class="group relative flex flex-col rounded-2xl border border-white/5 bg-grey-1/60 p-8 transition-all duration-300 hover:-translate-y-1 hover:bg-grey-2"
+          style={`transition-delay: ${(idx % 3) * 80}ms`}
+        >
+          {/* Status badge */}
+          <div class="mb-6 flex items-center gap-2">
+            <span class="text-24" aria-hidden="true">{project.emoji}</span>
+            <span class={`font-title text-12 ${project.statusColor}`}>
+              {project.status}
+            </span>
+          </div>
+
+          {/* Name */}
+          <h3 class="font-title text-24 font-semibold tracking-tight text-white">
+            {project.name}
+          </h3>
+
+          {/* Tagline */}
+          <p class="mt-2 text-13 italic text-coral-500/80">
+            {project.tagline}
+          </p>
+
+          {/* Description */}
+          <p class="mt-4 flex-1 text-14 leading-relaxed text-white/60">
+            {project.description}
+          </p>
+
+          {/* Features */}
+          <ul class="mt-6 space-y-2">
+            {project.features.map((feature) => (
+              <li class="flex items-center gap-2 text-13 text-white/70">
+                <span
+                  class="size-1 shrink-0 rounded-full bg-coral-500"
+                  aria-hidden="true"
+                ></span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          {/* Stack */}
+          <div class="relative z-[3] mt-6 flex flex-wrap gap-2 border-t border-white/5 pt-4">
+            {project.stack.map((tech) => (
+              <span class="font-title rounded-full border border-white/10 px-2.5 py-0.5 text-12 text-white/40">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  {/* Per-card mouse tracking for spotlight effect */}
+  <script>
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      const section = document.querySelector("#projekte");
+      const cards = section?.querySelectorAll<HTMLElement>("[data-spotlight-card]") ?? [];
+      cards.forEach((card) => {
+        let raf = 0;
+        let px = 0;
+        let py = 0;
+        const onMove = (e: MouseEvent) => {
+          const rect = card.getBoundingClientRect();
+          px = e.clientX - rect.left;
+          py = e.clientY - rect.top;
+          if (!raf) {
+            raf = requestAnimationFrame(() => {
+              card.style.setProperty("--mx", `${px}px`);
+              card.style.setProperty("--my", `${py}px`);
+              raf = 0;
+            });
+          }
+        };
+        const onLeave = () => {
+          card.style.setProperty("--mx", "-100px");
+          card.style.setProperty("--my", "-100px");
+        };
+        card.addEventListener("mousemove", onMove, { passive: true });
+        card.addEventListener("mouseleave", onLeave, { passive: true });
+      });
+    }
+  </script>
+</section>

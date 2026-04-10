@@ -1,0 +1,101 @@
+---
+import GlowButton from "../ui/GlowButton.astro";
+---
+
+<section
+  id="kontakt"
+  class="section-padding relative overflow-hidden bg-grey-1"
+>
+  {/* Background glow */}
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div
+      class="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-[180px]"
+      style="background: radial-gradient(circle, #FF7950 0%, transparent 70%);"
+    />
+  </div>
+
+  <div class="container-brv relative z-10 text-center">
+    {/* Eyebrow */}
+    <p data-reveal class="eyebrow mb-6 inline-flex items-center gap-3">
+      <span class="size-1.5 rounded-full bg-coral-500 shadow-[0_0_10px_#FF7950]"></span>
+      Lass uns sprechen
+    </p>
+
+    {/* Headline */}
+    <h2
+      data-reveal
+      class="h-section mx-auto max-w-[20ch] text-[clamp(2.5rem,7vw,5.25rem)] text-white"
+    >
+      <span class="text-gradient-hero">App, Website, KI-Agent?</span><br />
+      <span class="text-gradient-coral">Einfach schreiben.</span>
+    </h2>
+
+    {/* Subhead */}
+    <p
+      data-reveal
+      class="mx-auto mt-8 max-w-2xl text-18 leading-relaxed text-white/70 md:text-20"
+    >
+      Kein Kontaktformular mit 12 Feldern. Kein Chatbot.<br />
+      <em class="not-italic text-white">Eine E-Mail, eine Antwort.</em> So einfach sollte alles sein.
+    </p>
+
+    {/* Email CTA */}
+    <div data-reveal class="mt-12 flex flex-col items-center gap-6">
+      <div class="kontakt-cta-wrapper relative">
+        {/* Pulse rings */}
+        <span class="kontakt-pulse pointer-events-none absolute inset-0 rounded-full" aria-hidden="true"></span>
+        <span class="kontakt-pulse kontakt-pulse-2 pointer-events-none absolute inset-0 rounded-full" aria-hidden="true"></span>
+        <GlowButton href="mailto:hello@breviko.de" variant="primary" size="lg">
+          hello@breviko.de
+        </GlowButton>
+      </div>
+
+      {/* Trust line */}
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-13 text-white/40">
+        <span class="flex items-center gap-2">
+          <span class="size-1 rounded-full bg-coral-500 shadow-[0_0_8px_#FF7950]"></span>
+          Antwort innerhalb 24h
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="size-1 rounded-full bg-coral-500 shadow-[0_0_8px_#FF7950]"></span>
+          Erstgespräch kostenlos
+        </span>
+        <span class="flex items-center gap-2">
+          <span class="size-1 rounded-full bg-coral-500 shadow-[0_0_8px_#FF7950]"></span>
+          DSGVO-konform
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Pulse rings around the contact CTA — gentle invitation to click */
+    .kontakt-pulse {
+      box-shadow: 0 0 0 2px rgba(255, 121, 80, 0.4);
+      animation: kontaktPulse 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+    .kontakt-pulse-2 {
+      animation-delay: 1.3s;
+    }
+    @keyframes kontaktPulse {
+      0% {
+        opacity: 0.8;
+        transform: scale(1);
+      }
+      80% {
+        opacity: 0;
+        transform: scale(1.35);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.35);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .kontakt-pulse {
+        animation: none;
+        display: none;
+      }
+    }
+  </style>
+</section>

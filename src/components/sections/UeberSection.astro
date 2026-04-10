@@ -1,0 +1,109 @@
+---
+const akronym = [
+  { letter: "B", word: "Bauen" },
+  { letter: "R", word: "Reduzieren" },
+  { letter: "E", word: "Entwickeln" },
+  { letter: "V", word: "Vereinfachen" },
+  { letter: "I", word: "Implementieren" },
+  { letter: "K", word: "Kommunizieren" },
+  { letter: "O", word: "Optimieren" },
+];
+---
+
+<section
+  id="ueber"
+  class="section-padding relative overflow-hidden bg-grey-deep"
+>
+  <div class="container-brv relative z-10">
+    {/* Header */}
+    <div class="mb-20 max-w-3xl">
+      <p data-reveal class="eyebrow mb-6">Über uns</p>
+      <h2
+        data-reveal
+        class="h-section text-[clamp(2.5rem,6vw,5rem)] text-white"
+      >
+        Kein Großraumbüro.<br />
+        <span class="text-white/40">Trotzdem großartige<br />Ergebnisse.</span>
+      </h2>
+    </div>
+
+    {/* Story columns */}
+    <div class="grid gap-12 lg:grid-cols-2">
+      <div data-reveal class="space-y-6 text-16 leading-relaxed text-white/70 md:text-18">
+        <p>
+          <span class="text-white">Hi, ich bin Christian.</span> Ich baue Apps, Websites und KI-Lösungen — direkt, ohne Umwege, ohne Agentur-Aufschlag. Du redest mit dem der dein Projekt baut, nicht mit einem Vertriebler.
+        </p>
+        <p>
+          BREVIKO ist bewusst klein gehalten. Kein Büro mit Empfangsdame, kein Fuhrpark. Dafür: kurze Wege, schnelle Entscheidungen und Preise ohne Overhead. Was andere Agenturen für den Kickertisch ausgeben, sparst du dir.
+        </p>
+        <p>
+          Ob eine einfache Website, eine komplexe App oder die Frage <em class="not-italic text-white">"wie kann KI uns helfen?"</em> — schreib mir einfach. Wenn ich dir helfen kann, sag ich ja. Wenn nicht, sag ich dir ehrlich wer es besser kann.
+        </p>
+      </div>
+
+      {/* BREVIKO Akronym */}
+      <div
+        data-reveal
+        data-spotlight-card
+        class="relative rounded-3xl border border-white/5 bg-grey-1/40 p-10 transition-colors hover:border-white/10 md:p-12"
+      >
+        <div class="relative z-[3]">
+          <p class="font-title mb-8 inline-flex items-center gap-3 text-12 uppercase tracking-wider text-coral-500">
+            <span class="size-1 rounded-full bg-coral-500 shadow-[0_0_8px_#FF7950]" aria-hidden="true"></span>
+            Wofür steht BREVIKO?
+          </p>
+          <ul class="space-y-3">
+            {akronym.map((item, idx) => (
+              <li
+                class="akronym-row group flex items-baseline gap-6 transition-colors"
+                style={`transition-delay: ${idx * 40}ms`}
+              >
+                <span
+                  class="font-title text-32 font-semibold text-coral-500 transition-all group-hover:translate-x-1 group-hover:[text-shadow:0_0_20px_rgba(255,121,80,0.6)] md:text-40"
+                  aria-hidden="true"
+                >
+                  {item.letter}
+                </span>
+                <span class="font-body text-18 text-white/80 transition-colors group-hover:text-white md:text-20">
+                  {item.word}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Per-card mouse tracking for spotlight effect on akronym box */}
+  <script>
+    const ueberReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!ueberReduce) {
+      const section = document.querySelector("#ueber");
+      const cards = section?.querySelectorAll<HTMLElement>("[data-spotlight-card]") ?? [];
+      cards.forEach((card) => {
+        let raf = 0;
+        let px = 0;
+        let py = 0;
+        const onMove = (e: MouseEvent) => {
+          const rect = card.getBoundingClientRect();
+          px = e.clientX - rect.left;
+          py = e.clientY - rect.top;
+          if (!raf) {
+            raf = requestAnimationFrame(() => {
+              card.style.setProperty("--mx", `${px}px`);
+              card.style.setProperty("--my", `${py}px`);
+              raf = 0;
+            });
+          }
+        };
+        const onLeave = () => {
+          card.style.setProperty("--mx", "-100px");
+          card.style.setProperty("--my", "-100px");
+        };
+        card.addEventListener("mousemove", onMove, { passive: true });
+        card.addEventListener("mouseleave", onLeave, { passive: true });
+      });
+    }
+  </script>
+</section>

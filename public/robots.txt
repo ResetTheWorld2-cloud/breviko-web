@@ -1,0 +1,54 @@
+# BREVIKO — robots.txt
+# https://breviko.de
+
+User-agent: *
+Allow: /
+
+# Block crawler waste paths
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /admin/
+
+# Be explicit about good crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# Block AI scrapers (optional — uncomment if you want to opt out)
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: ChatGPT-User
+# Disallow: /
+# User-agent: anthropic-ai
+# Disallow: /
+# User-agent: Claude-Web
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
+# User-agent: PerplexityBot
+# Disallow: /
+
+# Sitemap
+Sitemap: https://breviko.de/sitemap-index.xml

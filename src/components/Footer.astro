@@ -1,0 +1,32 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="relative border-t border-white/5 bg-grey-deep py-12">
+  <div class="container-brv">
+    <div class="grid gap-8 md:grid-cols-3 md:items-end">
+      {/* Brand */}
+      <div>
+        <p class="font-title text-18 font-semibold text-white">BREVIKO</p>
+        <p class="mt-1 text-13 text-white/50">
+          Apps. Websites. KI. Aus Bad Salzuflen.
+        </p>
+      </div>
+
+      {/* Quick Links */}
+      <nav class="flex flex-wrap gap-x-6 gap-y-2 text-13 text-white/60 md:justify-center">
+        <a href="#leistungen" class="hover:text-white">Leistungen</a>
+        <a href="#projekte" class="hover:text-white">Projekte</a>
+        <a href="#ueber" class="hover:text-white">Über</a>
+        <a href="#kontakt" class="hover:text-white">Kontakt</a>
+        <a href="/impressum" class="hover:text-white">Impressum</a>
+        <a href="/datenschutz" class="hover:text-white">Datenschutz</a>
+      </nav>
+
+      {/* Copyright */}
+      <p class="text-13 text-white/60 md:text-right">
+        © {year} BREVIKO. Mit Sorgfalt gebaut.
+      </p>
+    </div>
+  </div>
+</footer>

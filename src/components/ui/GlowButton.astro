@@ -1,0 +1,73 @@
+---
+/**
+ * GlowButton — Signature CTA mit 3-Layer Coral Glow
+ * Inspiriert von huly.io/See in Action Button
+ *
+ * Konstruktion:
+ * Layer 1: .glow-border Pseudo-Elements (::before blur 2px, ::after blur 15px)
+ * Layer 2: Zwei Mirror-Wrapper für Sweep-Effekt (optional, hier vereinfacht)
+ * Layer 3: Animierte radiale Lichtquelle innerhalb des Buttons
+ */
+interface Props {
+  href?: string;
+  variant?: "primary" | "ghost";
+  size?: "md" | "lg";
+  class?: string;
+}
+
+const {
+  href = "#kontakt",
+  variant = "primary",
+  size = "lg",
+  class: className = "",
+} = Astro.props;
+
+const isPrimary = variant === "primary";
+const isLarge = size === "lg";
+---
+
+<div class={`relative inline-flex items-center ${className}`}>
+  {/* Pseudo-Element Glow Border (only on primary) */}
+  {isPrimary && (
+    <div
+      class="glow-border absolute left-1/2 top-1/2 h-[calc(100%+10px)] w-[calc(100%+10px)] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform"
+      aria-hidden="true"
+    />
+  )}
+
+  <a
+    href={href}
+    class:list={[
+      "relative z-10 inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-bold uppercase tracking-snug transition-transform duration-200 ease-smooth hover:scale-[1.02] active:scale-[0.98]",
+      isLarge ? "h-12 px-12 text-13" : "h-10 px-8 text-12",
+      isPrimary
+        ? "border border-white/60 bg-[#d9d9d9] text-coral-900"
+        : "border border-white/20 bg-transparent text-white hover:border-white/40",
+    ]}
+  >
+    {isPrimary && (
+      <>
+        {/* Animated inner light source — Layer 3 */}
+        <div
+          class="glow-light absolute -z-10 flex w-[140%] items-center justify-center"
+          aria-hidden="true"
+        >
+          {/* Bright inner glow circle */}
+          <div
+            class="absolute top-1/2 h-[140px] w-[140px] -translate-y-1/2 rounded-full"
+            style="background: radial-gradient(50% 50% at 50% 50%, #FFFFF5 3.5%, #FFAA81 26.5%, #FFDA9F 37.5%, rgba(255,170,129,0.50) 49%, rgba(210,106,58,0) 92.5%);"
+          />
+          {/* Soft outer ellipse */}
+          <div
+            class="absolute top-1/2 h-[120px] w-[240px] -translate-y-1/2 rounded-full blur-[5px]"
+            style="background: radial-gradient(43.3% 44.23% at 50% 49.51%, #FFFFF7 29%, #FFFACD 48.5%, #F4D2BF 60.71%, rgba(214,211,210,0) 100%);"
+          />
+        </div>
+      </>
+    )}
+
+    <span class="relative z-10 whitespace-nowrap">
+      <slot />
+    </span>
+  </a>
+</div>

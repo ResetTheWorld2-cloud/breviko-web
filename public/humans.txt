@@ -1,0 +1,32 @@
+/* TEAM */
+
+Gründer & Entwickler: Christian
+Rolle: Software Engineer, KI-Berater, Lean-UX-Fanatiker
+Stack: Swift · SwiftUI · TypeScript · Astro · Python
+Ort: Bad Salzuflen, Ostwestfalen, Deutschland
+Kontakt: hello [at] breviko.de
+Website: https://breviko.de
+
+/* DANK GEHT AN */
+
+Die Handwerker und Mittelständler, die uns
+vertrauen. Ohne euch keine Apps die Sinn machen.
+
+Die Open-Source-Community, ohne die nichts
+von alledem möglich wäre.
+
+/* SITE */
+
+Letztes Update: 2026-04-10
+Sprache: Deutsch (de-DE)
+Doctype: HTML5
+IDE: Neovim · Xcode · VS Code
+Build: Astro 5 · Tailwind CSS 4
+Hosting: Eigener Server
+Design: Lean UX · Ive × Krishna Prinzipien
+Philosophie: "Das beste Interface ist keins."
+
+/* FUN FACT */
+
+Diese Website wurde ohne Tracking-Cookies gebaut.
+Keine Analytics. Kein Fingerprinting. Nur Inhalt.

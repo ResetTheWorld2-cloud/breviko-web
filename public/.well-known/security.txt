@@ -1,0 +1,12 @@
+# BREVIKO — Security Contact
+# https://breviko.de
+
+Contact: mailto:security@breviko.de
+Contact: mailto:hello@breviko.de
+Expires: 2027-04-10T23:59:59.000Z
+Preferred-Languages: de, en
+Canonical: https://breviko.de/.well-known/security.txt
+
+# Found a vulnerability? Please let us know.
+# Wir antworten so schnell wie möglich — meistens innerhalb von 48h.
+# Responsible disclosure ist willkommen.
