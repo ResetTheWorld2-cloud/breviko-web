@@ -1,0 +1,645 @@
+---
+/**
+ * IdentityCanvas v4 — Asymmetric Layout + Interaktivität
+ *
+ * Layout: 12 cols × 6 rows Grid
+ * - Website Builder:  col 1-5, row 1-3   (groß, oben links)
+ * - Posteingang:      col 6-8, row 1-3   (mittel, oben mitte)
+ * - WhatsApp Chat:    col 9-12, row 1-2  (oben rechts, kompakt)
+ * - Stundenzettel:    col 9-12, row 3-4  (mitte rechts)
+ * - Excel:            col 1-5, row 4-6   (groß, unten links)
+ * - iPhone App:       col 6-8, row 4-6   (mittel, unten mitte)
+ * - Video:            col 9-12, row 5-6  (rechts unten, doppelte Höhe)
+ *
+ * Wait — that's 7 tiles but Stundenzettel and iPhone are the same.
+ * Let me restructure properly:
+ * - Website Builder:  col 1-5,  row 1-3   (5×3)
+ * - Posteingang:      col 6-9,  row 1-3   (4×3)
+ * - WhatsApp Chat:    col 10-12,row 1-3   (3×3)
+ * - Excel:            col 1-5,  row 4-6   (5×3)
+ * - iPhone App:       col 6-8,  row 4-6   (3×3)
+ * - Video:            col 9-12, row 4-6   (4×3, größer als andere)
+ */
+---
+
+{/* ============================================================
+     TILT WRAPPER — Perspective + 3D Rotation
+     Outer wrapper holds perspective so the inner canvas can rotate
+     in 3D space without disturbing its filter / clip-path layers.
+     ============================================================ */}
+<div
+  data-tilt-perspective
+  class="relative h-full w-full"
+  style="perspective: 1400px; perspective-origin: 50% 50%;"
+>
+<div
+  data-tilt-rotator
+  class="tilt-rotator relative h-full w-full"
+  style="--tilt-x: 0deg; --tilt-y: 0deg; transform-style: preserve-3d; transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));"
+>
+<div
+  data-identity-canvas
+  class="identity-canvas font-body relative h-full w-full overflow-hidden rounded-3xl border border-white/10 bg-grey-2"
+  style="--mx: -300px; --my: -300px; --mask-size: 280px;"
+  role="presentation"
+  aria-hidden="true"
+>
+  {/* ============================================================
+       LAYER A — Dark Baseline (immer sichtbar)
+       Desktop: stark gedimmt (Hover reveals)
+       Touch:   leichter gedimmt (kein Hover, alles soll lesbar sein)
+       ============================================================ */}
+  <div class="identity-grid absolute inset-0 grid grid-cols-12 grid-rows-6 gap-3 p-3">
+    {/* TILE 1: Website Builder (5×3, oben links) */}
+    <div class="col-span-5 row-span-3 overflow-hidden rounded-xl border border-white/5 bg-grey-1">
+      <div class="flex items-center gap-1.5 border-b border-white/10 bg-grey-2 px-3 py-2">
+        <span class="size-2 rounded-full bg-red-500/60"></span>
+        <span class="size-2 rounded-full bg-yellow-500/60"></span>
+        <span class="size-2 rounded-full bg-green-500/60"></span>
+        <div class="ml-2 flex-1 truncate rounded-md bg-white/5 px-2 py-0.5 text-10 text-white/55">
+          handwerk-mueller.de
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 p-4">
+        <div class="flex items-center justify-between">
+          <div class="h-2 w-14 rounded-full bg-white/20"></div>
+          <div class="flex gap-1.5">
+            <div class="h-1.5 w-6 rounded-full bg-white/15"></div>
+            <div class="h-1.5 w-6 rounded-full bg-white/15"></div>
+            <div class="h-1.5 w-6 rounded-full bg-white/15"></div>
+          </div>
+        </div>
+        <div class="mt-3 h-3.5 w-40 rounded-full bg-white/30"></div>
+        <div class="h-3.5 w-32 rounded-full bg-white/20"></div>
+        <div class="mt-2 h-1.5 w-44 rounded-full bg-white/10"></div>
+        <div class="h-1.5 w-40 rounded-full bg-white/10"></div>
+        <div class="h-1.5 w-36 rounded-full bg-white/10"></div>
+        <div class="mt-3 inline-flex h-5 items-center justify-center rounded-full bg-coral-500/40 px-3 text-[9px] font-medium text-white/60">
+          Anfrage →
+        </div>
+      </div>
+    </div>
+
+    {/* TILE 2: Email Inbox (4×3, oben mitte) */}
+    <div class="col-span-4 row-span-3 overflow-hidden rounded-xl border border-white/5 bg-grey-1 p-3">
+      <div class="mb-2 flex items-center justify-between">
+        <div class="flex items-center gap-1.5 text-10 font-medium text-white/60">
+          <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Posteingang
+        </div>
+        <span class="rounded-full bg-coral-500/30 px-2 py-0 text-[9px] text-coral-500">3</span>
+      </div>
+      <div class="space-y-1.5">
+        <div class="flex items-start gap-1.5 rounded-md border border-coral-500/20 bg-coral-500/5 p-1.5">
+          <span class="mt-1 size-1.5 shrink-0 rounded-full bg-coral-500"></span>
+          <div class="min-w-0 flex-1">
+            <div class="truncate text-10 font-medium text-white/80">Familie Schmidt</div>
+            <div class="truncate text-[9px] text-white/50">Anfrage Bad-Sanierung</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-1.5 rounded-md p-1.5">
+          <span class="mt-1 size-1.5 shrink-0 rounded-full bg-white/20"></span>
+          <div class="min-w-0 flex-1">
+            <div class="truncate text-10 text-white/60">Bauunternehmen Wagner</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 rounded-md border-l-2 border-coral-500 bg-grey-2 p-1.5">
+        <div class="flex items-center gap-1 text-[9px] text-coral-500">
+          <svg class="size-2.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>
+          BREVIKO AI antwortet…
+        </div>
+        <div class="mt-0.5 line-clamp-2 text-[9px] text-white/50">
+          "Hallo Familie Schmidt, gerne komme ich am Donnerstag…"
+        </div>
+      </div>
+    </div>
+
+    {/* TILE 3: WhatsApp Chat (3×3, oben rechts) */}
+    <div class="col-span-3 row-span-3 overflow-hidden rounded-xl border border-white/5 bg-grey-1 p-3">
+      <div class="mb-2 flex items-center gap-1.5">
+        <div class="flex size-6 items-center justify-center rounded-full bg-green-600/40 text-[9px] font-bold text-white/80">M</div>
+        <div class="min-w-0 flex-1">
+          <div class="truncate text-10 font-medium text-white/80">Müller GmbH</div>
+          <div class="text-[9px] text-white/55">online</div>
+        </div>
+      </div>
+      <div class="space-y-1">
+        <div class="max-w-[90%] rounded-xl rounded-bl-sm bg-white/5 px-2 py-1 text-[9px] text-white/60">
+          Heizung?
+        </div>
+        <div class="ml-auto max-w-[90%] rounded-xl rounded-br-sm bg-green-700/30 px-2 py-1 text-[9px] text-white/70">
+          Klar! 9 Uhr
+        </div>
+        <div class="max-w-[85%] rounded-xl rounded-bl-sm bg-white/5 px-2 py-1 text-[9px] text-white/60">
+          Top 🙏
+        </div>
+      </div>
+      <div class="mt-2 flex items-center gap-1.5 rounded-md border border-coral-500/20 bg-coral-500/5 p-1.5">
+        <span class="size-1.5 animate-pulse rounded-full bg-coral-500"></span>
+        <span class="text-[9px] text-coral-500">Termin erstellt</span>
+      </div>
+    </div>
+
+    {/* TILE 4: Excel Auto-Gen (4×3, unten links) */}
+    <div class="col-span-4 row-span-3 overflow-hidden rounded-xl border border-white/5 bg-grey-1 p-3">
+      <div class="mb-2 flex items-center justify-between">
+        <div class="flex items-center gap-1.5 text-10 font-medium text-white/60">
+          <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          Rechnung_Müller.xlsx
+        </div>
+        <span class="flex items-center gap-1 rounded-full bg-green-500/20 px-2 py-0 text-[9px] text-green-400">
+          <span class="size-1 animate-pulse rounded-full bg-green-400"></span>
+          Auto
+        </span>
+      </div>
+      <div class="space-y-0">
+        <div class="grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/10 py-1 text-[9px] text-white/55">
+          <span>Position</span>
+          <span class="tabular-nums">Std</span>
+          <span class="tabular-nums">Σ</span>
+        </div>
+        <div class="grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/5 py-1.5 text-10">
+          <span class="text-white/60">Anfahrt</span>
+          <span class="tabular-nums text-white/55">0,5</span>
+          <span class="tabular-nums text-white/60">42 €</span>
+        </div>
+        <div class="grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/5 py-1.5 text-10">
+          <span class="text-white/60">Heizung</span>
+          <span class="tabular-nums text-white/55">1,5</span>
+          <span class="tabular-nums text-white/60">126 €</span>
+        </div>
+        <div class="grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/5 py-1.5 text-10">
+          <span class="text-white/60">Material</span>
+          <span class="tabular-nums text-white/55">—</span>
+          <span class="tabular-nums text-white/60">38 €</span>
+        </div>
+        <div class="grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/5 py-1.5 text-10">
+          <span class="text-white/55">MwSt</span>
+          <span class="tabular-nums text-white/55">—</span>
+          <span class="tabular-nums text-white/55">39,52 €</span>
+        </div>
+        <div class="grid grid-cols-[1fr_auto] gap-3 py-1.5 text-12 font-bold">
+          <span class="text-white/80">Gesamt</span>
+          <span class="tabular-nums text-white/80">245,52 €</span>
+        </div>
+      </div>
+    </div>
+
+    {/* TILE 5: Stundenzettel iPhone (3×3, unten mitte) */}
+    <div class="col-span-3 row-span-3 flex items-center justify-center overflow-hidden rounded-xl border border-white/5 bg-grey-1 p-3">
+      <div class="relative flex h-full max-h-[240px] w-[135px] max-w-full flex-col overflow-hidden rounded-[18px] border-2 border-white/20 bg-gradient-to-b from-grey-3 to-grey-2 shadow-2xl" data-phone-frame>
+        <div class="absolute left-1/2 top-1 h-1.5 w-10 -translate-x-1/2 rounded-full bg-black"></div>
+        <div class="flex items-center justify-between px-4 pb-1 pt-4 text-[9px] text-white/60">
+          <span class="font-mono tabular-nums">9:41</span>
+          <span>••• ▭</span>
+        </div>
+        <div class="flex-1 px-2 pt-1">
+          <div class="text-center text-[9px] font-semibold text-white/80">Stundenzettel</div>
+          <div class="mx-auto mt-1.5 rounded-lg bg-white/5 p-1.5 text-center">
+            <div class="font-mono text-14 font-bold tabular-nums leading-none text-white/80">04:23</div>
+            <div class="mt-0.5 text-[9px] text-white/50">Müller GmbH</div>
+          </div>
+          <div class="mt-1.5 rounded-md bg-coral-500/30 py-1 text-center text-[9px] font-medium text-coral-300">
+            ⏸ Pause
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* TILE 6: Papier-Chaos (5×3, unten rechts — PROMINENT)
+         Layer A: Poster-Image (statisch) — wenig Bytes, dimmt unter dem Filter ein.
+         Layer B unten verwendet das tatsächliche Video für die Reveal-Bewegung. */}
+    <div class="relative col-span-5 row-span-3 overflow-hidden rounded-xl border border-white/5 bg-grey-1">
+      <img
+        src="/videos/hero-clip-c-chaos-poster.jpg"
+        alt=""
+        width="640"
+        height="360"
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full object-cover"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3">
+        <div class="text-12 font-semibold text-white/80">Dein Schreibtisch.</div>
+        <div class="text-10 text-white/55">Heute. Vermutlich.</div>
+      </div>
+      <div class="absolute right-2 top-2 flex items-center gap-1 rounded-full border border-white/10 bg-black/60 px-2 py-0.5 text-[9px] text-white/60 backdrop-blur">
+        <span class="size-1 animate-pulse rounded-full bg-red-500"></span>
+        live
+      </div>
+    </div>
+  </div>
+
+  {/* ============================================================
+       LAYER B — Colorful Reveal (clip-path: circle() Spotlight)
+       Desktop-only: auf Touch komplett ausgeblendet — dort übernimmt
+       die hellere Baseline (Layer A) die Lesbarkeit.
+       ============================================================ */}
+  <div
+    class="identity-reveal absolute inset-0 grid grid-cols-12 grid-rows-6 gap-3 p-3 [clip-path:circle(var(--mask-size)_at_var(--mx)_var(--my))] transition-[clip-path] duration-100"
+    aria-hidden="true"
+  >
+    {/* TILE 1: Website Builder — REVEAL */}
+    <div class="col-span-5 row-span-3 overflow-hidden rounded-xl border border-coral-500/30 bg-grey-1 shadow-[0_0_40px_rgba(255,121,80,0.2)]">
+      <div class="flex items-center gap-1.5 border-b border-white/10 bg-grey-2 px-3 py-2">
+        <span class="size-2 rounded-full bg-red-500"></span>
+        <span class="size-2 rounded-full bg-yellow-500"></span>
+        <span class="size-2 rounded-full bg-green-500"></span>
+        <div class="ml-2 flex-1 truncate rounded-md bg-white/10 px-2 py-0.5 text-10 text-white/80">
+          🔒 handwerk-mueller.de
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 p-4">
+        <div class="flex items-center justify-between">
+          <div class="h-2 w-14 rounded-full bg-gradient-to-r from-coral-500 to-coral-700"></div>
+          <div class="flex gap-1.5">
+            <div class="h-1.5 w-6 rounded-full bg-white/60"></div>
+            <div class="h-1.5 w-6 rounded-full bg-white/60"></div>
+            <div class="h-1.5 w-6 rounded-full bg-white/60"></div>
+          </div>
+        </div>
+        <div class="mt-3 h-3.5 w-40 rounded-full bg-white"></div>
+        <div class="h-3.5 w-32 rounded-full bg-gradient-to-r from-white to-coral-300"></div>
+        <div class="mt-2 h-1.5 w-44 rounded-full bg-white/50"></div>
+        <div class="h-1.5 w-40 rounded-full bg-white/50"></div>
+        <div class="h-1.5 w-36 rounded-full bg-white/50"></div>
+        <button
+          type="button"
+          tabindex="-1"
+          aria-hidden="true"
+          class="mt-3 inline-flex h-5 items-center justify-center rounded-full bg-gradient-to-r from-coral-500 to-coral-700 px-3 text-[9px] font-bold text-white shadow-[0_0_15px_rgba(255,121,80,0.5)] transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,121,80,0.7)] active:scale-95"
+        >
+          Anfrage →
+        </button>
+      </div>
+    </div>
+
+    {/* TILE 2: Email Inbox — REVEAL */}
+    <div class="col-span-4 row-span-3 overflow-hidden rounded-xl border border-coral-500/30 bg-grey-1 p-3 shadow-[0_0_40px_rgba(255,121,80,0.2)]">
+      <div class="mb-2 flex items-center justify-between">
+        <div class="flex items-center gap-1.5 text-10 font-medium text-white">
+          <svg class="size-3.5 text-coral-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Posteingang
+        </div>
+        <span class="rounded-full bg-coral-500 px-2 py-0 text-[9px] font-bold text-white shadow-[0_0_8px_#FF7950]">3</span>
+      </div>
+      <div class="space-y-1.5">
+        <div class="group/email flex items-start gap-1.5 rounded-md border border-coral-500/40 bg-coral-500/10 p-1.5 transition-all hover:border-coral-500/60 hover:bg-coral-500/15">
+          <span class="mt-1 size-1.5 shrink-0 rounded-full bg-coral-500 shadow-[0_0_6px_#FF7950]"></span>
+          <div class="min-w-0 flex-1">
+            <div class="truncate text-10 font-bold text-white">Familie Schmidt</div>
+            <div class="truncate text-[9px] text-white/70">Anfrage Bad-Sanierung</div>
+          </div>
+        </div>
+        <div class="group/email flex items-start gap-1.5 rounded-md p-1.5 transition-all hover:bg-white/5">
+          <span class="mt-1 size-1.5 shrink-0 rounded-full bg-white/40"></span>
+          <div class="min-w-0 flex-1">
+            <div class="truncate text-10 text-white/80">Bauunternehmen Wagner</div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 rounded-md border-l-2 border-coral-500 bg-gradient-to-r from-coral-500/15 to-transparent p-1.5">
+        <div class="flex items-center gap-1 text-[9px] font-semibold text-coral-500">
+          <svg class="size-2.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg>
+          BREVIKO AI antwortet…
+        </div>
+        <div class="mt-0.5 line-clamp-2 text-[9px] text-white/90">
+          "Hallo Familie Schmidt, gerne komme ich am Donnerstag…"
+        </div>
+      </div>
+    </div>
+
+    {/* TILE 3: WhatsApp Chat — REVEAL with typing animation */}
+    <div class="col-span-3 row-span-3 overflow-hidden rounded-xl border border-coral-500/30 bg-grey-1 p-3 shadow-[0_0_40px_rgba(255,121,80,0.2)]">
+      <div class="mb-2 flex items-center gap-1.5">
+        <div class="flex size-6 items-center justify-center rounded-full bg-green-600 text-[9px] font-bold text-white shadow-lg">M</div>
+        <div class="min-w-0 flex-1">
+          <div class="truncate text-10 font-medium text-white">Müller GmbH</div>
+          <div class="flex items-center gap-1 text-[9px] text-green-400">
+            <span class="size-1.5 rounded-full bg-green-400"></span>
+            online
+          </div>
+        </div>
+      </div>
+      <div class="space-y-1">
+        <div class="max-w-[90%] rounded-xl rounded-bl-sm bg-white/10 px-2 py-1 text-[9px] text-white">
+          Heizung?
+        </div>
+        <div class="ml-auto max-w-[90%] rounded-xl rounded-br-sm bg-green-600 px-2 py-1 text-[9px] text-white shadow-lg">
+          Klar! 9 Uhr
+        </div>
+        <div class="max-w-[85%] rounded-xl rounded-bl-sm bg-white/10 px-2 py-1 text-[9px] text-white">
+          Top 🙏
+        </div>
+        {/* Typing indicator (animated) */}
+        <div class="ml-auto inline-flex items-center gap-1 rounded-xl rounded-br-sm bg-green-600/60 px-2 py-1.5">
+          <span class="size-1 animate-bounce rounded-full bg-white" style="animation-delay: 0ms"></span>
+          <span class="size-1 animate-bounce rounded-full bg-white" style="animation-delay: 150ms"></span>
+          <span class="size-1 animate-bounce rounded-full bg-white" style="animation-delay: 300ms"></span>
+        </div>
+      </div>
+      <div class="mt-2 flex items-center gap-1.5 rounded-md border border-coral-500/40 bg-coral-500/10 p-1.5">
+        <span class="size-1.5 animate-pulse rounded-full bg-coral-500 shadow-[0_0_6px_#FF7950]"></span>
+        <span class="text-[9px] font-medium text-coral-500">Termin erstellt ✓</span>
+      </div>
+    </div>
+
+    {/* TILE 4: Excel Auto-Gen — REVEAL with fill animation */}
+    <div class="col-span-4 row-span-3 overflow-hidden rounded-xl border border-coral-500/30 bg-grey-1 p-3 shadow-[0_0_40px_rgba(255,121,80,0.2)]">
+      <div class="mb-2 flex items-center justify-between">
+        <div class="flex items-center gap-1.5 text-10 font-medium text-white">
+          <svg class="size-3.5 text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+          Rechnung_Müller.xlsx
+        </div>
+        <span class="flex items-center gap-1 rounded-full bg-green-500/30 px-2 py-0 text-[9px] font-medium text-green-400">
+          <span class="size-1 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_#4ade80]"></span>
+          Auto
+        </span>
+      </div>
+      <div class="space-y-0">
+        <div class="grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/20 py-1 text-[9px] text-white/60">
+          <span>Position</span>
+          <span class="tabular-nums">Std</span>
+          <span class="tabular-nums">Σ</span>
+        </div>
+        <div class="excel-row grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/10 py-1.5 text-10">
+          <span class="text-white">Anfahrt</span>
+          <span class="tabular-nums text-white/60">0,5</span>
+          <span class="tabular-nums text-white">42 €</span>
+        </div>
+        <div class="excel-row grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/10 py-1.5 text-10">
+          <span class="text-white">Heizung</span>
+          <span class="tabular-nums text-white/60">1,5</span>
+          <span class="tabular-nums text-white">126 €</span>
+        </div>
+        <div class="excel-row grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/10 py-1.5 text-10">
+          <span class="text-white">Material</span>
+          <span class="tabular-nums text-white/60">—</span>
+          <span class="tabular-nums text-white">38 €</span>
+        </div>
+        <div class="excel-row grid grid-cols-[1fr_auto_auto] gap-3 border-b border-white/10 py-1.5 text-10">
+          <span class="text-white/60">MwSt</span>
+          <span class="tabular-nums text-white/55">—</span>
+          <span class="tabular-nums text-white/60">39,52 €</span>
+        </div>
+        <div class="excel-row grid grid-cols-[1fr_auto] gap-3 py-1.5 text-12 font-bold">
+          <span class="text-white">Gesamt</span>
+          <span class="tabular-nums text-coral-500">245,52 €</span>
+        </div>
+      </div>
+    </div>
+
+    {/* TILE 5: Stundenzettel iPhone — REVEAL with interactive button */}
+    <div class="col-span-3 row-span-3 flex items-center justify-center overflow-hidden rounded-xl border border-coral-500/30 bg-grey-1 p-3 shadow-[0_0_40px_rgba(255,121,80,0.2)]">
+      <div class="relative h-full max-h-[260px] w-[150px] max-w-full rounded-[20px] border-2 border-coral-500/40 bg-gradient-to-b from-grey-3 to-grey-2 shadow-[0_0_30px_rgba(255,121,80,0.3)]">
+        <div class="absolute left-1/2 top-1 h-1.5 w-10 -translate-x-1/2 rounded-full bg-black"></div>
+        <div class="flex items-center justify-between px-4 pb-1 pt-4 text-[9px] text-white/80">
+          <span class="font-mono tabular-nums">9:41</span>
+          <span>••• ▭</span>
+        </div>
+        <div class="flex-1 px-2 pt-1">
+          <div class="text-center text-[9px] font-semibold text-white">Stundenzettel</div>
+          <div class="mx-auto mt-1.5 rounded-lg bg-coral-500/10 p-1.5 text-center">
+            <div class="font-mono text-14 font-bold tabular-nums leading-none text-white">04:23</div>
+            <div class="mt-0.5 text-[9px] text-coral-300">Müller GmbH</div>
+          </div>
+          <button
+            data-pause-toggle
+            type="button"
+            tabindex="-1"
+            aria-hidden="true"
+            class="mt-1.5 w-full rounded-md bg-gradient-to-r from-coral-500 to-coral-700 py-1 text-center text-[9px] font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-[0_0_15px_rgba(255,121,80,0.5)] active:scale-95"
+          >
+            ⏸ Pause
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {/* TILE 6: Video — REVEAL (prominenter mit Coral-Border und Caption)
+         640px-optimierte Version (~185 KB statt 1.7 MB).
+         preload="metadata" damit das Video nicht vor sichtbar werden geladen wird —
+         autoplay startet es trotzdem sobald es sichtbar ist. */}
+    <div class="relative col-span-5 row-span-3 overflow-hidden rounded-xl border border-coral-500/40 bg-grey-1 shadow-[0_0_50px_rgba(255,121,80,0.3)]">
+      <video
+        src="/videos/hero-clip-c-chaos-640.mp4"
+        poster="/videos/hero-clip-c-chaos-poster.jpg"
+        width="640"
+        height="360"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        class="h-full w-full object-cover"
+        aria-hidden="true"
+      ></video>
+      <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent p-3">
+        <div class="text-12 font-semibold text-white">Dein Schreibtisch.</div>
+        <div class="text-10 text-coral-300">Heute. Vermutlich.</div>
+      </div>
+      <div class="absolute right-2 top-2 flex items-center gap-1 rounded-full border border-coral-500/40 bg-black/70 px-2 py-0.5 text-[9px] font-bold text-white backdrop-blur">
+        <span class="size-1 animate-pulse rounded-full bg-red-500 shadow-[0_0_6px_#ef4444]"></span>
+        live
+      </div>
+    </div>
+  </div>
+
+  {/* Soft glow ring around spotlight cursor — Desktop only */}
+  <div
+    class="identity-cursor pointer-events-none absolute -z-0"
+    style="left: var(--mx); top: var(--my); width: 0; height: 0;"
+    aria-hidden="true"
+  >
+    <div
+      class="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
+      style="width: calc(var(--mask-size) * 2); height: calc(var(--mask-size) * 2); background: radial-gradient(circle, rgba(255,121,80,0.12) 0%, transparent 60%); filter: blur(20px);"
+    ></div>
+  </div>
+
+  {/* Hint label — kompakt, mittig oben (Desktop only — Touch sieht alles direkt) */}
+  <div
+    class="identity-hint pointer-events-none absolute left-1/2 top-3 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/15 bg-grey-1/95 px-3 py-1 text-10 font-medium text-white/80 shadow-2xl backdrop-blur transition-opacity duration-500"
+    data-hint
+  >
+    <span class="inline-flex items-center gap-1.5">
+      <svg class="size-2.5 animate-pulse text-coral-500" viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6"/></svg>
+      Erkunde deine Identität
+    </span>
+  </div>
+</div>
+{/* /tilt-rotator */}
+</div>
+{/* /tilt-perspective */}
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Touch devices: kein Hover → kein Spotlight-Tracking, kein Tilt.
+  // Layer B / Cursor / Hint sind via CSS schon ausgeblendet, also auch JS deaktivieren.
+  const isTouch = window.matchMedia("(pointer: coarse)").matches;
+  const canvas = document.querySelector<HTMLElement>("[data-identity-canvas]");
+  const rotator = document.querySelector<HTMLElement>("[data-tilt-rotator]");
+  const hint = canvas?.querySelector<HTMLElement>("[data-hint]");
+
+  // Maximum tilt angle in degrees (subtle, premium-feel)
+  const MAX_TILT = 4;
+
+  if (canvas && !reduceMotion && !isTouch) {
+    let raf = 0;
+    let pendingX = -300;
+    let pendingY = -300;
+    let pendingTiltX = 0;
+    let pendingTiltY = 0;
+    let firstMove = true;
+
+    const apply = () => {
+      // Spotlight position
+      canvas.style.setProperty("--mx", `${pendingX}px`);
+      canvas.style.setProperty("--my", `${pendingY}px`);
+      // 3D tilt — apply on rotator wrapper
+      if (rotator) {
+        rotator.style.setProperty("--tilt-x", `${pendingTiltX}deg`);
+        rotator.style.setProperty("--tilt-y", `${pendingTiltY}deg`);
+      }
+      raf = 0;
+    };
+
+    const updateFromCoords = (clientX: number, clientY: number) => {
+      const rect = canvas.getBoundingClientRect();
+      const localX = clientX - rect.left;
+      const localY = clientY - rect.top;
+      pendingX = localX;
+      pendingY = localY;
+
+      // Normalize cursor position to -1..1 around center
+      const nx = (localX / rect.width) * 2 - 1;
+      const ny = (localY / rect.height) * 2 - 1;
+      // Tilt: cursor at top → rotateX positive (tile leans back)
+      //       cursor at right → rotateY positive (tile leans right)
+      pendingTiltX = -ny * MAX_TILT;
+      pendingTiltY = nx * MAX_TILT;
+    };
+
+    const onMove = (e: MouseEvent) => {
+      updateFromCoords(e.clientX, e.clientY);
+
+      if (firstMove && hint) {
+        hint.style.opacity = "0";
+        firstMove = false;
+      }
+
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+
+    const onLeave = () => {
+      pendingX = -500;
+      pendingY = -500;
+      pendingTiltX = 0;
+      pendingTiltY = 0;
+      if (!raf) raf = requestAnimationFrame(apply);
+    };
+
+    canvas.addEventListener("mousemove", onMove, { passive: true });
+    canvas.addEventListener("mouseleave", onLeave, { passive: true });
+    // Touch-Handler entfallen — auf Touch ist Layer B/Cursor/Tilt komplett deaktiviert.
+  }
+
+  // ============================================================
+  // INTERAKTIVITÄT: Pause-Button Toggle (Stundenzettel)
+  // Wird auf ALLEN Geräten gebraucht — Desktop Hover-Reveal UND Touch
+  // (Layer A bleibt sichtbar, Buttons sind tappbar).
+  // ============================================================
+  const pauseButtons = document.querySelectorAll<HTMLButtonElement>("[data-pause-toggle]");
+  pauseButtons.forEach((btn) => {
+    let paused = false;
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      paused = !paused;
+      btn.textContent = paused ? "▶ Weiter" : "⏸ Pause";
+      btn.classList.toggle("from-green-500", paused);
+      btn.classList.toggle("to-green-700", paused);
+      btn.classList.toggle("from-coral-500", !paused);
+      btn.classList.toggle("to-coral-700", !paused);
+    });
+  });
+</script>
+
+<style>
+  /* ============================================================
+     IDENTITY CANVAS — RESPONSIVE STRATEGY
+     ============================================================
+     Desktop (pointer: fine):
+       - Layer A stark gedimmt
+       - Layer B als Spotlight-Reveal über Cursor (clip-path circle)
+       - Cursor-Glow + Hint-Label sichtbar
+       - 3D-Tilt aktiv
+
+     Touch (pointer: coarse) / Reduced-Motion:
+       - Layer A leichter gedimmt — alles ist direkt lesbar
+       - Layer B (Spotlight) ausgeblendet — kein Hover, kein Reveal
+       - Cursor-Glow + Hint-Label ausgeblendet
+       - 3D-Tilt deaktiviert (kein Mouse-Tracking → kein Sinn)
+     ============================================================ */
+
+  /* Layer A — Baseline Dimming */
+  .identity-grid {
+    filter: brightness(0.4) saturate(0.15);
+    transition: filter 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Touch & reduced-motion: lighter baseline so content is readable static */
+  @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .identity-grid {
+      filter: brightness(0.72) saturate(0.55);
+      transition: none;
+    }
+    /* Layer B (Spotlight reveal) ausblenden — ergibt ohne Hover keinen Sinn */
+    .identity-reveal,
+    .identity-cursor,
+    .identity-hint {
+      display: none !important;
+    }
+    /* Tilt-Rotator zurücksetzen — kein 3D auf Touch */
+    .tilt-rotator {
+      transform: none !important;
+    }
+  }
+
+  /* 3D Tilt Rotator — smooth easing on transform changes
+     Short duration during active hover, longer for return-to-rest. */
+  .tilt-rotator {
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+
+  /* Excel row stagger-fill animation when revealed */
+  .identity-canvas .excel-row {
+    animation: excelFillIn 600ms ease-out backwards;
+  }
+  .identity-canvas .excel-row:nth-child(2) { animation-delay: 100ms; }
+  .identity-canvas .excel-row:nth-child(3) { animation-delay: 200ms; }
+  .identity-canvas .excel-row:nth-child(4) { animation-delay: 300ms; }
+  .identity-canvas .excel-row:nth-child(5) { animation-delay: 400ms; }
+  .identity-canvas .excel-row:nth-child(6) { animation-delay: 500ms; }
+
+  @keyframes excelFillIn {
+    from {
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .identity-canvas .excel-row {
+      animation: none;
+    }
+  }
+</style>

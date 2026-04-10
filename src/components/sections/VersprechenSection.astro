@@ -1,0 +1,78 @@
+---
+const promises = [
+  {
+    title: "Kompliziert kann jeder.",
+    description:
+      "Jeder kann Features stapeln. Es braucht Disziplin, sie wegzulassen. Wir bauen so lange ab, bis nur noch das übrig ist was du wirklich brauchst.",
+  },
+  {
+    title: "Hässlich ist nicht fertig.",
+    description:
+      "Deine App, deine Website — das ist deine Visitenkarte. Wenn sie gut aussieht, vertrauen dir die Leute. Wenn nicht, klicken sie weg. Design ist kein Extra, es ist Pflicht.",
+  },
+  {
+    title: "Weniger Klicks, mehr Ergebnis.",
+    description:
+      "Drei Taps statt zwölf. Ein Bildschirm statt fünf. Wir fragen bei jedem Element: Braucht der Nutzer das wirklich? Wenn nein, fliegt es raus.",
+  },
+  {
+    title: "Klein schlägt groß.",
+    description:
+      "Kein Overhead, keine Abstimmungsrunden. Du sagst morgens was du brauchst, abends gibt es einen Prototyp. So schnell ist keine Agentur.",
+  },
+];
+---
+
+<section
+  id="versprechen"
+  class="section-padding relative overflow-hidden bg-grey-1"
+>
+  <div class="container-brv relative z-10">
+    {/* Header */}
+    <div class="mb-20 max-w-3xl">
+      <p data-reveal class="eyebrow mb-6">Versprechen</p>
+      <h2
+        data-reveal
+        class="h-section text-[clamp(2.5rem,6vw,5rem)] text-white"
+      >
+        Vier Dinge, die wir<br />
+        <span class="text-gradient-coral">anders machen.</span>
+      </h2>
+    </div>
+
+    {/* Promises — typografisch, viel Whitespace */}
+    <div class="space-y-px">
+      {promises.map((promise, idx) => (
+        <article
+          data-reveal
+          class="versprechen-row group relative grid items-baseline gap-8 border-t border-white/5 py-12 transition-colors last:border-b md:grid-cols-[auto_1fr_2fr] md:gap-16"
+          style={`transition-delay: ${idx * 80}ms`}
+        >
+          {/* Subtle hover glow line at top */}
+          <span
+            class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-coral-500/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            aria-hidden="true"
+          ></span>
+
+          {/* Number */}
+          <span
+            class="font-title text-32 font-light text-coral-500/60 transition-all group-hover:text-coral-500 group-hover:[text-shadow:0_0_20px_rgba(255,121,80,0.5)] md:text-40"
+            aria-hidden="true"
+          >
+            0{idx + 1}
+          </span>
+
+          {/* Title */}
+          <h3 class="font-title text-28 font-medium leading-tight tracking-tight text-white transition-transform group-hover:translate-x-1 md:text-40">
+            {promise.title}
+          </h3>
+
+          {/* Description */}
+          <p class="max-w-xl text-15 leading-relaxed text-white/60 transition-colors group-hover:text-white/80 md:text-16">
+            {promise.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,137 @@
+---
+const services = [
+  {
+    number: "01",
+    eyebrow: "Apps & Websites",
+    headline: "Dein Geschäft, digital.",
+    description:
+      "Deine Kunden suchen dich online — und finden eine Website von 2015? Deine Monteure füllen noch Papier aus? Wir bauen dir eine App oder Website die so einfach ist, dass niemand eine Anleitung braucht.",
+    bullets: ["iOS Apps", "Moderne Websites", "Von Idee bis Launch", "Keine Templates"],
+  },
+  {
+    number: "02",
+    eyebrow: "KI-Agenten & Automatisierung",
+    headline: "Während du schläfst, arbeitet dein Agent.",
+    description:
+      "Angebote schreiben, Kundenfragen beantworten, Daten auswerten — rund um die Uhr. Wir bauen dir einen digitalen Assistenten der nie krank wird, nie Urlaub braucht und nie vergisst.",
+    bullets: ["Angebote in Sekunden", "24/7 verfügbar", "Deine Prozesse automatisiert", "Keine Vorkenntnisse nötig"],
+  },
+  {
+    number: "03",
+    eyebrow: "Excel, Daten & Automatisierung",
+    headline: "Deine Excel-Hölle? Wir räumen auf.",
+    description:
+      "Kaputte Formeln, doppelte Einträge, stundenlange Handarbeit? Wir bringen Ordnung in dein Datenchaos. Automatische Auswertungen, saubere Tabellen, Berichte die sich selbst erstellen.",
+    bullets: ["Excel-Optimierung", "Automatische Reports", "Datenmigration", "VBA & Power Query"],
+  },
+  {
+    number: "04",
+    eyebrow: "KI-Training & Workshops",
+    headline: "Dein Team kann KI. In einem Tag.",
+    description:
+      "Ein Tag, ein klares Ergebnis: dein Team versteht KI und nutzt sie produktiv. Keine Fachsprache, keine Folien-Schlachten. Echte Werkzeuge für den echten Arbeitsalltag.",
+    bullets: ["Hands-on Workshops", "Maßgeschneidert", "Keine Folien-Schlachten", "Sofort einsetzbar"],
+  },
+];
+---
+
+<section
+  id="leistungen"
+  class="section-padding relative overflow-hidden bg-grey-1"
+>
+  <div class="container-brv relative z-10">
+    {/* Header */}
+    <div class="mb-20 max-w-3xl">
+      <p data-reveal class="eyebrow mb-6">Leistungen</p>
+      <h2
+        data-reveal
+        class="h-section text-[clamp(2.5rem,6vw,5rem)] text-white"
+      >
+        Was dein Geschäft<br />
+        <span class="text-gradient-coral">wirklich braucht.</span>
+      </h2>
+    </div>
+
+    {/* Services Grid */}
+    <div class="grid gap-px overflow-hidden rounded-3xl border border-white/5 bg-white/5 md:grid-cols-2">
+      {services.map((service, idx) => (
+        <article
+          data-reveal
+          data-spotlight-card
+          class="group relative bg-grey-1 p-8 transition-colors hover:bg-grey-4 md:p-12"
+          style={`transition-delay: ${idx * 80}ms`}
+        >
+          {/* Number badge */}
+          <div class="mb-6 flex items-center gap-4">
+            <span
+              class="font-title text-13 font-medium text-coral-500"
+              aria-hidden="true"
+            >
+              {service.number}
+            </span>
+            <span class="h-px flex-1 bg-white/10"></span>
+            <span class="font-title text-12 uppercase tracking-wider text-white/40">
+              {service.eyebrow}
+            </span>
+          </div>
+
+          {/* Headline */}
+          <h3 class="font-title text-28 font-medium leading-tight tracking-tight text-white md:text-32">
+            {service.headline}
+          </h3>
+
+          {/* Description */}
+          <p class="mt-4 max-w-xl text-15 leading-relaxed text-white/60 md:text-16">
+            {service.description}
+          </p>
+
+          {/* Bullets */}
+          <ul class="relative z-[3] mt-8 grid grid-cols-2 gap-3">
+            {service.bullets.map((bullet) => (
+              <li class="flex items-center gap-2 text-13 text-white/60">
+                <span
+                  class="size-1 shrink-0 rounded-full bg-coral-500"
+                  aria-hidden="true"
+                ></span>
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  {/* Per-card mouse tracking for spotlight effect */}
+  <script>
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) {
+      // Scope to this section to avoid duplicate listeners with ProjekteSection
+      const section = document.querySelector("#leistungen");
+      const cards = section?.querySelectorAll<HTMLElement>("[data-spotlight-card]");
+      cards?.forEach((card) => {
+        let raf = 0;
+        let px = 0;
+        let py = 0;
+        const onMove = (e: MouseEvent) => {
+          const rect = card.getBoundingClientRect();
+          px = e.clientX - rect.left;
+          py = e.clientY - rect.top;
+          if (!raf) {
+            raf = requestAnimationFrame(() => {
+              card.style.setProperty("--mx", `${px}px`);
+              card.style.setProperty("--my", `${py}px`);
+              raf = 0;
+            });
+          }
+        };
+        const onLeave = () => {
+          card.style.setProperty("--mx", "-100px");
+          card.style.setProperty("--my", "-100px");
+        };
+        card.addEventListener("mousemove", onMove, { passive: true });
+        card.addEventListener("mouseleave", onLeave, { passive: true });
+      });
+    }
+  </script>
+</section>

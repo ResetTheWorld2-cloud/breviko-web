@@ -1,0 +1,83 @@
+---
+/**
+ * Header — Sticky mit Backdrop-Blur (besser als Hulys absolute Header)
+ * Wird transparent in Hero, dann mit subtiler Blur-Background nach Scroll
+ */
+const navItems = [
+  { label: "Leistungen", href: "#leistungen" },
+  { label: "Story", href: "#story" },
+  { label: "Projekte", href: "#projekte" },
+  { label: "Über", href: "#ueber" },
+  { label: "Kontakt", href: "#kontakt" },
+];
+---
+
+<header
+  class="fixed inset-x-0 top-0 z-40 h-16 transition-all duration-300 ease-smooth"
+  data-header
+>
+  {/* Backdrop layer (visible after scroll) */}
+  <div
+    class="absolute inset-0 -z-10 opacity-0 transition-opacity duration-300"
+    data-header-bg
+    style="background: rgba(9, 10, 12, 0.7); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(255, 255, 255, 0.06);"
+    aria-hidden="true"
+  />
+
+  <nav class="container-brv flex h-full items-center justify-between" aria-label="Hauptnavigation">
+    {/* Logo */}
+    <a
+      href="#hero"
+      class="font-title text-18 font-semibold tracking-tight text-white transition-opacity hover:opacity-80"
+    >
+      BREVIKO
+    </a>
+
+    {/* Desktop Nav */}
+    <ul class="hidden items-center gap-1 md:flex">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="rounded-full px-4 py-2 text-14 font-body text-white/70 transition-colors duration-200 hover:bg-white/5 hover:text-white"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    {/* CTA */}
+    <a
+      href="#kontakt"
+      class="hidden items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-12 font-bold uppercase tracking-snug text-white backdrop-blur transition-all duration-200 hover:border-coral-500/50 hover:bg-white/10 md:inline-flex"
+    >
+      <span class="size-1.5 rounded-full bg-coral-500 shadow-[0_0_8px_#FF7950]"></span>
+      Erstgespräch
+    </a>
+
+    {/* Mobile menu toggle */}
+    <button
+      class="relative size-10 md:hidden"
+      aria-label="Menü öffnen"
+      data-mobile-toggle
+    >
+      <span class="absolute right-2 top-3 block h-0.5 w-6 rounded-full bg-white transition-all"></span>
+      <span class="absolute right-2 top-[18px] block h-0.5 w-6 rounded-full bg-white transition-all"></span>
+      <span class="absolute right-2 bottom-3 block h-0.5 w-4 rounded-full bg-white transition-all"></span>
+    </button>
+  </nav>
+</header>
+
+<script>
+  // Header background appears after scroll
+  const header = document.querySelector("[data-header-bg]");
+  const updateHeader = () => {
+    if (header) {
+      const scrolled = window.scrollY > 50;
+      (header as HTMLElement).style.opacity = scrolled ? "1" : "0";
+    }
+  };
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
+</script>

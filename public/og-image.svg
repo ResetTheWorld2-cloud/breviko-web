@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Definitions -->
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="bgGradient" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1a1d22"/>
+      <stop offset="100%" stop-color="#090A0C"/>
+    </radialGradient>
+
+    <!-- Coral glow -->
+    <radialGradient id="coralGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF7950" stop-opacity="0.35"/>
+      <stop offset="40%" stop-color="#FF7950" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FF7950" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Headline gradient -->
+    <linearGradient id="headlineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FFB599"/>
+    </linearGradient>
+
+    <!-- Coral accent gradient -->
+    <linearGradient id="coralAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFB599"/>
+      <stop offset="50%" stop-color="#FF7950"/>
+      <stop offset="100%" stop-color="#E55A2B"/>
+    </linearGradient>
+
+    <!-- Grid pattern -->
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Coral orb (top-right) -->
+  <circle cx="1000" cy="150" r="350" fill="url(#coralGlow)"/>
+
+  <!-- Coral orb (bottom-left) -->
+  <circle cx="200" cy="550" r="280" fill="url(#coralGlow)" opacity="0.6"/>
+
+  <!-- Logo mark (top-left) -->
+  <g transform="translate(80, 80)">
+    <rect width="56" height="56" rx="12" fill="#090A0C" stroke="rgba(255,121,80,0.3)" stroke-width="1"/>
+    <text x="28" y="40" font-family="ui-monospace, Menlo, monospace" font-size="32" font-weight="700" fill="#FF7950" text-anchor="middle">B</text>
+  </g>
+
+  <!-- Brand text next to logo -->
+  <text x="156" y="118" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#FFFFFF" letter-spacing="4">BREVIKO</text>
+  <text x="156" y="140" font-family="ui-monospace, Menlo, monospace" font-size="12" font-weight="400" fill="rgba(255,255,255,0.5)" letter-spacing="1.5">bad salzuflen · ostwestfalen</text>
+
+  <!-- Main headline -->
+  <text x="80" y="310" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="80" font-weight="800" fill="url(#headlineGradient)" letter-spacing="-2">Apps die sich</text>
+  <text x="80" y="400" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="80" font-weight="800" fill="url(#headlineGradient)" letter-spacing="-2">richtig anfühlen.</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="460" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="26" font-weight="400" fill="rgba(255,255,255,0.7)">Apps · Websites · KI-Agenten für Handwerk &amp; KMU</text>
+
+  <!-- Service tags -->
+  <g transform="translate(80, 510)">
+    <!-- Tag 1 -->
+    <rect x="0" y="0" width="140" height="40" rx="20" fill="rgba(255,121,80,0.1)" stroke="rgba(255,121,80,0.4)" stroke-width="1"/>
+    <text x="70" y="26" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#FF7950" text-anchor="middle">iOS Apps</text>
+
+    <!-- Tag 2 -->
+    <rect x="156" y="0" width="140" height="40" rx="20" fill="rgba(255,121,80,0.1)" stroke="rgba(255,121,80,0.4)" stroke-width="1"/>
+    <text x="226" y="26" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#FF7950" text-anchor="middle">Websites</text>
+
+    <!-- Tag 3 -->
+    <rect x="312" y="0" width="160" height="40" rx="20" fill="rgba(255,121,80,0.1)" stroke="rgba(255,121,80,0.4)" stroke-width="1"/>
+    <text x="392" y="26" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#FF7950" text-anchor="middle">KI-Agenten</text>
+
+    <!-- Tag 4 -->
+    <rect x="488" y="0" width="180" height="40" rx="20" fill="rgba(255,121,80,0.1)" stroke="rgba(255,121,80,0.4)" stroke-width="1"/>
+    <text x="578" y="26" font-family="-apple-system, Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#FF7950" text-anchor="middle">Automatisierung</text>
+  </g>
+
+  <!-- URL bottom-right -->
+  <text x="1120" y="580" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="500" fill="rgba(255,255,255,0.6)" text-anchor="end">breviko.de</text>
+
+  <!-- Coral accent line bottom-right -->
+  <rect x="920" y="560" width="180" height="2" fill="url(#coralAccent)"/>
+</svg>

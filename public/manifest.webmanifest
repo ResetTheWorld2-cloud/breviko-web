@@ -1,0 +1,38 @@
+{
+  "name": "BREVIKO — Apps die sich richtig anfühlen.",
+  "short_name": "BREVIKO",
+  "description": "Apps, Websites & KI-Agenten aus Bad Salzuflen. Digitale Lösungen die Arbeit abnehmen.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#090A0C",
+  "theme_color": "#090A0C",
+  "lang": "de-DE",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "developer"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Erstgespräch",
+      "short_name": "Kontakt",
+      "description": "Direkt zu einem kostenlosen Erstgespräch",
+      "url": "/#kontakt",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Projekte ansehen",
+      "short_name": "Projekte",
+      "description": "Eigene Apps & Tools von BREVIKO",
+      "url": "/#projekte",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import PainPointsSection from "../components/sections/PainPointsSection.astro";
+import LeistungenSection from "../components/sections/LeistungenSection.astro";
+import WarumBrevikoSection from "../components/sections/WarumBrevikoSection.astro";
+import ProjekteSection from "../components/sections/ProjekteSection.astro";
+import VersprechenSection from "../components/sections/VersprechenSection.astro";
+import UeberSection from "../components/sections/UeberSection.astro";
+import KontaktSection from "../components/sections/KontaktSection.astro";
+---
+
+<Layout
+  title="BREVIKO — Apps die sich richtig anfühlen."
+  description="Apps, Websites, KI-Agenten & Beratung aus Ostwestfalen. Digitale Produkte nach Lean-UX-Prinzipien. Entwicklung, Automatisierung, Schulungen."
+>
+  <Header />
+
+  <main id="main">
+    <HeroSection />
+    <PainPointsSection />
+    <LeistungenSection />
+    <WarumBrevikoSection />
+    <ProjekteSection />
+    <VersprechenSection />
+    <UeberSection />
+    <KontaktSection />
+  </main>
+
+  <Footer />
+</Layout>

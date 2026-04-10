@@ -1,0 +1,134 @@
+---
+const painPoints = [
+  {
+    pain: "Auftragsbücher sind voll — aber der Papierkram frisst den Feierabend.",
+    solution: "Digitale Prozesse die sich selbst erledigen. Rapporte, Angebote, Dokumentation — automatisch.",
+  },
+  {
+    pain: "Gute Mitarbeiter? Kaum zu bekommen. Und die Guten ertrinken in Verwaltung.",
+    solution: "KI-Agenten übernehmen die Routinearbeit. Dein Team macht das wofür du es eingestellt hast.",
+  },
+  {
+    pain: "Die Konkurrenz hat schon eine App. Du hast noch Durchschlag-Formulare.",
+    solution: "Eine eigene App oder Website — in Wochen, nicht Monaten. So einfach wie WhatsApp, aber für dein Geschäft.",
+  },
+  {
+    pain: "KI ist überall in den Nachrichten. Aber wo fängt man an?",
+    solution: "Mit einem ehrlichen Gespräch. Was bringt dir was, was ist Hype? Wir sortieren das für dich.",
+  },
+];
+---
+
+<section
+  id="story"
+  class="section-padding relative overflow-hidden bg-grey-deep"
+>
+  {/* Subtle background grid */}
+  <div
+    class="pointer-events-none absolute inset-0 opacity-[0.025]"
+    style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 80px 80px;"
+    aria-hidden="true"
+  />
+
+  <div class="container-brv relative z-10">
+    {/* Eyebrow */}
+    <p data-reveal class="eyebrow mb-6 inline-flex items-center gap-3">
+      <span class="size-1.5 rounded-full bg-coral-500 shadow-[0_0_10px_#FF7950]" aria-hidden="true"></span>
+      Kommt dir das bekannt vor?
+    </p>
+
+    {/* Headline */}
+    <h2
+      data-reveal
+      class="h-section max-w-[20ch] text-[clamp(2.5rem,6vw,5rem)] text-white"
+    >
+      Dein Geschäft läuft.<br />
+      <span class="text-white/40">Aber du läufst hinterher.</span>
+    </h2>
+
+    {/* Pain → Solution Grid */}
+    <div class="mt-20 grid gap-6 md:grid-cols-2">
+      {painPoints.map((item, idx) => (
+        <article
+          data-reveal
+          data-spotlight-card
+          class="group relative rounded-2xl border border-white/5 bg-grey-2/40 p-8 backdrop-blur-sm transition-colors hover:border-white/10"
+          style={`transition-delay: ${idx * 60}ms`}
+        >
+          <div class="relative z-[3]">
+            {/* Pain row */}
+            <div class="flex items-start gap-4">
+              <span
+                class="mt-1 flex size-7 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/40 transition-colors group-hover:border-white/20 group-hover:text-white/60"
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 12 12" class="size-3" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m2 2 8 8M10 2l-8 8" stroke-linecap="round" />
+                </svg>
+              </span>
+              <p class="text-16 leading-relaxed text-white/60 md:text-18">
+                {item.pain}
+              </p>
+            </div>
+
+            {/* Divider with arrow */}
+            <div class="my-6 flex items-center gap-3" aria-hidden="true">
+              <span class="h-px flex-1 bg-gradient-to-r from-transparent via-coral-500/30 to-transparent"></span>
+              <svg viewBox="0 0 16 16" class="size-4 text-coral-500 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 8h10m-4-4 4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span class="h-px flex-1 bg-gradient-to-r from-transparent via-coral-500/30 to-transparent"></span>
+            </div>
+
+            {/* Solution row */}
+            <div class="flex items-start gap-4">
+              <span
+                class="mt-1 flex size-7 shrink-0 items-center justify-center rounded-full bg-coral-500/10 text-coral-500 transition-all group-hover:bg-coral-500/20 group-hover:shadow-[0_0_15px_rgba(255,121,80,0.3)]"
+                aria-hidden="true"
+              >
+                <svg viewBox="0 0 12 12" class="size-3" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="m2 6 3 3 5-7" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <p class="text-16 font-medium leading-relaxed text-white md:text-18">
+                {item.solution}
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  {/* Per-card mouse tracking for spotlight effect */}
+  <script>
+    const painReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!painReduce) {
+      const section = document.querySelector("#story");
+      const cards = section?.querySelectorAll<HTMLElement>("[data-spotlight-card]") ?? [];
+      cards.forEach((card) => {
+        let raf = 0;
+        let px = 0;
+        let py = 0;
+        const onMove = (e: MouseEvent) => {
+          const rect = card.getBoundingClientRect();
+          px = e.clientX - rect.left;
+          py = e.clientY - rect.top;
+          if (!raf) {
+            raf = requestAnimationFrame(() => {
+              card.style.setProperty("--mx", `${px}px`);
+              card.style.setProperty("--my", `${py}px`);
+              raf = 0;
+            });
+          }
+        };
+        const onLeave = () => {
+          card.style.setProperty("--mx", "-100px");
+          card.style.setProperty("--my", "-100px");
+        };
+        card.addEventListener("mousemove", onMove, { passive: true });
+        card.addEventListener("mouseleave", onLeave, { passive: true });
+      });
+    }
+  </script>
+</section>

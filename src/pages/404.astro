@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import GlowButton from "../components/ui/GlowButton.astro";
+---
+
+<Layout
+  title="404 — Diese Seite gibt es nicht. | BREVIKO"
+  description="Die gesuchte Seite existiert nicht. Zurück zur Startseite oder direkt Kontakt aufnehmen."
+  noindex={true}
+>
+  <Header />
+
+  <main id="main" class="relative flex min-h-screen items-center justify-center overflow-hidden bg-grey-1 px-6 pt-32 pb-20">
+    {/* Background gradient orbs */}
+    <div class="pointer-events-none absolute inset-0 -z-0" aria-hidden="true">
+      <div
+        class="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-[140px]"
+        style="background: radial-gradient(circle, rgba(255,121,80,0.4) 0%, rgba(255,121,80,0) 70%);"
+      />
+    </div>
+
+    {/* Subtle grid pattern */}
+    <div
+      class="pointer-events-none absolute inset-0 -z-0 opacity-[0.025]"
+      style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 80px 80px;"
+      aria-hidden="true"
+    />
+
+    <div class="container-brv relative z-10 text-center">
+      {/* Big 404 */}
+      <p
+        class="font-title bg-gradient-to-br from-coral-300 via-coral-500 to-coral-700 bg-clip-text text-[clamp(8rem,20vw,16rem)] font-bold leading-none tracking-tighter text-transparent"
+      >
+        404
+      </p>
+
+      {/* Headline */}
+      <h1
+        class="h-display mt-4 text-[clamp(2rem,5vw,3.5rem)] text-gradient-hero"
+      >
+        Diese Seite gibt es nicht.<br />
+        <span class="text-white/40">Macht nichts.</span>
+      </h1>
+
+      {/* Subhead */}
+      <p class="mx-auto mt-8 max-w-xl text-16 leading-snug text-white/70 md:text-18">
+        Vielleicht hast du dich vertippt. Vielleicht wurde die Seite verschoben.
+        Oder vielleicht ist sie nie entstanden. Egal — hier geht's weiter:
+      </p>
+
+      {/* CTAs */}
+      <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <GlowButton href="/" variant="primary" size="lg">
+          Zur Startseite
+        </GlowButton>
+
+        <a
+          href="/#kontakt"
+          class="group inline-flex items-center gap-2 px-2 py-3 text-14 font-medium text-white/70 transition-colors hover:text-white"
+        >
+          Direkt schreiben
+          <svg
+            class="size-4 transition-transform group-hover:translate-x-1"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <path d="M3 8h10m-4-4 4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+      {/* Easter egg */}
+      <p class="mt-16 text-12 text-white/30">
+        Selbst die 404-Seite haben wir mit Liebe gebaut. So viel Zeit muss sein.
+      </p>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
